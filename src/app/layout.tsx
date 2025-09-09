@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Montserrat } from "next/font/google";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 import "./globals.css";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={`${dmSans.variable} ${montserrat.variable} antialiased`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
