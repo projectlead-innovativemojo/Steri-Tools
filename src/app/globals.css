@@ -33,3 +33,12 @@ body {
     rgba(43, 68, 192, 0.3) 86.86%
   );
 }
+
+.homegradient-0deg {
+  background: linear-gradient(
+    89.82deg,
+    #14205a 2.69%,
+    rgba(31, 50, 141, 0.65) 81.66%,
+    rgba(43, 68, 192, 0.3) 99.85%
+  );
+}
