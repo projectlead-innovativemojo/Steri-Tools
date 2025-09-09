@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
+import Text from "@/ui/Text";
+import Button from "@/ui/Button";
+
 import bg from "@/public/images/home/whynow-bg.png";
-import Text from "@/components/ui/Text";
-import Button from "@/components/ui/Button";
 
 const WhyNowSection = () => {
   return (
@@ -19,7 +20,7 @@ const WhyNowSection = () => {
         {/* Title */}
         <Text
           as="h2"
-          className="text-[36px] font-semibold text-[#EDD98A] pt-[103px] mb-[100px]"
+          className="text-[36px] font-semibold text-[#EDD98A] pt-[103px] mb-[100px] md:text-left text-center"
         >
           Why now?
         </Text>
@@ -27,7 +28,7 @@ const WhyNowSection = () => {
         {/* Stats Row*/}
         <div className="flex flex-col md:flex-row justify-between items-start gap-[50] text-white mb-[32px]">
           {/* Stat 1 */}
-          <div className="max-w-[291px] flex flex-col items-center text-center">
+          <div className="md:max-w-[291px] w-full flex flex-col items-center text-center">
             <span>
               <svg
                 width="25"
@@ -48,7 +49,7 @@ const WhyNowSection = () => {
           </div>
 
           {/* Stat 2 */}
-          <div className="max-w-[291px] flex flex-col items-center text-center">
+          <div className="md:max-w-[291px] w-full flex flex-col items-center text-center">
             <span>
               <svg
                 width="25"
@@ -70,7 +71,7 @@ const WhyNowSection = () => {
           </div>
 
           {/* Stat 3 */}
-          <div className="max-w-[291px] flex flex-col items-center text-center">
+          <div className="md:max-w-[291px] w-full flex flex-col items-center text-center">
             <span>
               <svg
                 width="24"
@@ -92,7 +93,7 @@ const WhyNowSection = () => {
           </div>
 
           {/* Stat 4 */}
-          <div className="max-w-[291px] flex flex-col items-center text-center">
+          <div className="md:max-w-[291px] w-full flex flex-col items-center text-center">
             <span>
               <svg
                 width="25"

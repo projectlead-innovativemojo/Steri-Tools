@@ -1,15 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 
 import { gsap } from "gsap";
-import { FaChevronDown } from "react-icons/fa";
 
 import Drawer from "../ui/Drawer";
-import Text from "../ui/Text";
 import Button from "../ui/Button";
 
 const Navbar = () => {
@@ -124,7 +121,7 @@ const Navbar = () => {
                   <div className="flex items-center h-[70vh] md:h-full w-full justify-center">
                     <ul className="font-medium w-full left-0 z-50 flex flex-col py-4 md:p-0 mt-4 gap-[0px]">
                       <a
-                        href="/"
+                        href="/our-story"
                         className="block text-[16px] font-medium leading-7 text-[#FFFFFF] uppercase"
                       >
                         <li className="flex justify-center py-[15px] list-items font-dmSans">
@@ -134,7 +131,7 @@ const Navbar = () => {
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
 
                       <a
-                        href="/about-me"
+                        href="/our-team"
                         className="block  text-[16px] font-medium leading-7 text-[#FFFFFF] uppercase"
                       >
                         <li className="flex justify-center py-[15px] list-items">
@@ -144,7 +141,7 @@ const Navbar = () => {
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
 
                       <a
-                        href="/shop"
+                        href="/contact-us"
                         className="block text-[16px] font-medium leading-7 text-[#FFFFFF]"
                       >
                         <li className="flex justify-center py-[15px] list-items">

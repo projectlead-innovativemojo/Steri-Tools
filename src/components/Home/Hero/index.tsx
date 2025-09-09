@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import Text from "@/components/ui/Text";
+import Text from "@/ui/Text";
 import bg from "@/public/images/home/herobg.png";
 const HomeHero = () => {
   return (
@@ -9,11 +9,11 @@ const HomeHero = () => {
       <Image
         src={bg}
         alt="image"
-        className="absolute w-full h-full min-h-[655px] rounded-[24px]"
+        className="absolute w-full h-full min-h-[655px] rounded-[24px] left-0"
       />
-      <div className="w-full h-full homegradient absolute rounded-[24px]"></div>
+      <div className="w-full h-full homegradient absolute rounded-[24px] left-0"></div>
       <div className="relative flex justify-center items-center h-full min-h-[655px] w-full max-w-[854px] px-6">
-        <Text as="h1" className="text-[#fff]">
+        <Text as="h1" className="text-[#fff] md:text-left text-center">
           Designed to{" "}
           <span className="text-[#EDD98A]">
             {" "}

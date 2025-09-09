@@ -1,6 +1,6 @@
 import React from "react";
 
-import Text from "@/components/ui/Text";
+import Text from "@/ui/Text";
 
 const Footer = () => {
   return (

@@ -6,10 +6,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./App.css";
-import slidePic1 from "../src/assets/Pictures/image1.png";
-import slidePic2 from "../src/assets/Pictures/image2.png";
-import slidePic3 from "../src/assets/Pictures/image3.png";
+
 import movenextbtn from "@/public/images/team/ArrowCircleRight.svg";
 import moveprevbtn from "@/public/images/team/ArrowCircleRight.svg";
 // import { useState } from "react";
@@ -79,13 +76,11 @@ const TeamSlider = () => {
           </SwiperSlide>
         </Swiper>
 
-        <img
+        <Image
           className="custom-next"
           onClick={handleNextvbtn}
           src={movenextbtn}
           alt="movenextbtn"
-          width="47px"
-          height="47px"
         />
       </div>
     </div>

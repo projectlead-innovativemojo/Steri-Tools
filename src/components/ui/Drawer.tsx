@@ -21,14 +21,11 @@ const Drawer: React.FC<DrawerProps> = ({
   // drawerTitle,
   children,
 }) => {
-  const handleEscapeKeyPress = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        // onClose();
-      }
-    },
-    [onClose]
-  );
+  const handleEscapeKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      // onClose();
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {

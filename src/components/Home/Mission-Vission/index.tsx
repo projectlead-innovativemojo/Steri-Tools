@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import Text from "@/components/ui/Text";
+import Text from "@/ui/Text";
+
 import missionBg from "@/public/images/home/mission-vission-bg.png";
 import deviceImg from "@/public/images/home/sterlitool-misson.png";
 

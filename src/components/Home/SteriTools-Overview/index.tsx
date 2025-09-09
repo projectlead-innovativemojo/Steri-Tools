@@ -1,7 +1,7 @@
 import React from "react";
 
-import Text from "@/components/ui/Text";
-import Button from "@/components/ui/Button";
+import Text from "@/ui/Text";
+import Button from "@/ui/Button";
 
 const SteriToolsOverview = () => {
   return (

@@ -35,7 +35,7 @@ const SurgicalInstruments = () => {
 
       {/* 2 */}
 
-      <div className="flex relative items-center gap-[10px]">
+      <div className="flex relative items-center gap-[10px] md:flex-now-wrap flex-col md:flex-row">
         <div className="relative h-full  flex justify-center items-center">
           <Image src={dotbg} alt="dotbg" className="absolute w-full h-full " />
           <Image
@@ -67,7 +67,7 @@ const SurgicalInstruments = () => {
       </div>
 
       {/* 3 */}
-      <div className="flex relative items-center flex-row-reverse gap-[10px]">
+      <div className="flex relative items-center flex-col gap-[10px]  md:flex-row-reverse">
         <div className="relative h-full min-h-[407px] w-full max-w-[590px] flex justify-center items-center">
           <Image
             src={dotbg}
@@ -80,7 +80,7 @@ const SurgicalInstruments = () => {
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10"
           />
         </div>
-        <Text className="w-full max-w-[608px]">
+        <Text className="w-full max-w-[608px] mt-[-30px] md:mt-0">
           SteriBasin Go is a compact, table-based disinfection device delivering{" "}
           {`>6-log`} bacterial reduction in under 15 seconds—without disrupting
           surgical flow.
