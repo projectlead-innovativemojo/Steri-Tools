@@ -12,7 +12,7 @@ import info2 from "@/public/images/story/info2.png";
 const StoryInfo = () => {
   return (
     <div className="w-full max-w-[1237px] px-5 mx-auto ">
-      <div className="w-full flex flex-col xl:flex-wrap md:flex-row md:items-center items-start gap-[30px] md:mb-[104px] mb-[70px]">
+      <div className="w-full flex flex-col md:flex-row md:items-center items-start gap-[30px] md:mb-[104px] mb-[70px]">
         <div>
           <Image src={shapes} alt="shapes" className="w-[135px] h-[135px]" />
           <Image
@@ -55,7 +55,7 @@ const StoryInfo = () => {
         </div>
       </div>
 
-      <div className="w-full flex xl:flex-wrap flex-col-reverse md:flex-row-reverse md:items-center items-start gap-[30px] md:mb-[104px] mb-[70px]">
+      <div className="w-full flex flex-col-reverse md:flex-row-reverse md:items-center items-start gap-[30px] md:mb-[104px] mb-[70px]">
         <div>
           <Image src={info2} alt="info1" className="w-full max-w-[502px] " />
           <Image

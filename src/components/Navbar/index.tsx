@@ -57,7 +57,7 @@ const Navbar = () => {
               <ul className="font-medium flex items-center gap-[30px]">
                 <li>
                   <Link
-                    href="/"
+                    href="/our-story"
                     className="block text-[16px] font-normal leading-[25px] text-[#FAF9F6]"
                   >
                     Our Story
@@ -65,7 +65,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="/about-me"
+                    href="/our-team"
                     className="block text-[16px] font-normal leading-[25px] text-[#FAF9F6]"
                   >
                     Our Team
@@ -73,7 +73,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="/recipes"
+                    href="/contact-us"
                     className="block text-[16px] font-normal leading-[25px] text-[#FAF9F6]"
                   >
                     Contact
