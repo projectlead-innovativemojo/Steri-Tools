@@ -68,7 +68,7 @@ export default function TeamSlider() {
       {/* Swiper Container */}
       <div className="relative mb-[78px] ">
         {/* Navigation Buttons */}
-        <div className="absolute right-[80px] bottom-[29px] z-10 flex gap-[33px]">
+        <div className="hidden md:absolute right-[80px] bottom-[29px] z-10 md:flex gap-[33px]">
           <div className="nav-team-left cursor-pointer">
             <Image src={navLeft} alt="Previous" width={42} height={42} />
           </div>
@@ -89,7 +89,7 @@ export default function TeamSlider() {
           {/* Team slides */}
           {teamMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <div className="min-h-[554px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-[110px] border-t-[3px] border-t-[#EDD98A]">
+              <div className="md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[110px] border-t-[3px] border-t-[#EDD98A]">
                 <div className="flex-shrink-0 w-full max-w-[300px]">
                   <Image
                     src={member.image}
@@ -102,13 +102,22 @@ export default function TeamSlider() {
                     {member.name}
                   </Text>
                 </div>
-                <div className="text-white text-sm leading-relaxed max-w-[711px] w-full ">
+                <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full ">
                   <Text className="whitespace-pre-line">{member.fullBio}</Text>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        {/* Navigation Buttons - Mobile */}
+        <div className="flex justify-center items-center mt-5 z-10 md:hidden gap-[33px]">
+          <div className="nav-team-left cursor-pointer">
+            <Image src={navLeft} alt="Previous" width={42} height={42} />
+          </div>
+          <div className="nav-team-right cursor-pointer">
+            <Image src={navRight} alt="Next" width={42} height={42} />
+          </div>
+        </div>
       </div>
 
       {/* Partner Button */}
