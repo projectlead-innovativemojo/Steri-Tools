@@ -59,7 +59,7 @@ const Drawer: React.FC<DrawerProps> = ({
       )}
       <div
         className={twMerge(
-          `fixed right-0 top-0 z-[999] h-full   w-[308px]  mob:w-full transform overflow-x-hidden transition-transform duration-300 bg-[#14205A]/90 ease-in-out ${
+          `fixed right-0 top-0 z-[999] h-full w-full transform overflow-x-hidden transition-transform duration-300 bg-[#14205A]/90 ease-in-out ${
             isOpen
               ? "transition-transform duration-700 ease-in-out translate-x-0"
               : "transition-transform duration-700 ease-in-out  translate-x-full"

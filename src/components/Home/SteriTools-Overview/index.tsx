@@ -2,10 +2,23 @@ import React from "react";
 
 import Text from "@/ui/Text";
 import Button from "@/ui/Button";
+import SurgicalInstrumentsSlider from "./Slider";
 
 const SteriToolsOverview = () => {
   return (
     <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mb-[55px]">
+      <div className="flex justify-center md:flex-row flex-col items-center px-5 md: md:py-0 py-5 gap-0 md:gap-[74px] bg-[#14205A] w-full max-w-[1240px] min-h-[554px] my-[70px] rounded-[24px]">
+        <Text className="text-white w-full max-w-[503px] font-bold">
+          <span className="text-[#EDD98A]"> SteriBasin Go: </span> A simple
+          solution that solves a complex problem. <br />
+          If {`you're`} a surgeon, veteran, OR staff, or forward surgical team,
+          how have you deal with this problem—and would a device like SteriTools
+          change your workflow?
+          <br /> <br />
+          Welcome to the SteriTools conversation.
+        </Text>
+        <SurgicalInstrumentsSlider />
+      </div>
       <div className="">
         <Text className="w-full mb-[56px]">
           Introducing <span className="text-[#EDD98A]">SteriBasin Go</span>, an

@@ -13,7 +13,7 @@ const HomeHero = () => {
       />
       <div className="w-full h-full homegradient absolute rounded-[24px] left-0"></div>
       <div className="relative flex justify-center items-center h-full min-h-[655px] w-full max-w-[854px] px-6">
-        <Text as="h1" className="text-[#fff] md:text-left text-center">
+        <Text as="h1" className="text-[#fff]">
           Designed to{" "}
           <span className="text-[#EDD98A]">
             {" "}

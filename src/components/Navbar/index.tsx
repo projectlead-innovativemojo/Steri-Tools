@@ -80,9 +80,11 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-              <Button className="p-[10px] w-[156px] h-10">
-                Partner with Us
-              </Button>
+              <a href="/our-partners">
+                <Button className="p-[10px] w-[156px] h-10">
+                  Partner with Us
+                </Button>
+              </a>
             </div>
 
             {/* Mobile hamburger + drawer (mobile only) */}
@@ -122,9 +124,9 @@ const Navbar = () => {
                     <ul className="font-medium w-full left-0 z-50 flex flex-col py-4 md:p-0 mt-4 gap-[0px]">
                       <a
                         href="/our-story"
-                        className="block text-[16px] font-medium leading-7 text-[#FFFFFF] uppercase"
+                        className="block text-[18px] font-medium leading-7 text-[#FFFFFF] uppercase"
                       >
-                        <li className="flex justify-center py-[15px] list-items font-dmSans">
+                        <li className="flex justify-center py-[20px] list-items font-dmSans">
                           Our Story
                         </li>
                       </a>
@@ -132,9 +134,9 @@ const Navbar = () => {
 
                       <a
                         href="/our-team"
-                        className="block  text-[16px] font-medium leading-7 text-[#FFFFFF] uppercase"
+                        className="block  text-[18px] font-medium leading-7 text-[#FFFFFF] uppercase"
                       >
-                        <li className="flex justify-center py-[15px] list-items">
+                        <li className="flex justify-center py-[20px] list-items">
                           Our Team
                         </li>
                       </a>
@@ -142,13 +144,19 @@ const Navbar = () => {
 
                       <a
                         href="/contact-us"
-                        className="block text-[16px] font-medium leading-7 text-[#FFFFFF]"
+                        className="block text-[18px] font-medium leading-7 text-[#FFFFFF]"
                       >
-                        <li className="flex justify-center py-[15px] list-items">
+                        <li className="flex justify-center py-[20px] list-items uppercase">
                           Contact
                         </li>
                       </a>
                       <hr className="h-px my- bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
+
+                      <a href="/our-partners">
+                        <Button className="p-[15px] w-full my-5 mx-auto h-[50px]">
+                          Partner with Us
+                        </Button>
+                      </a>
 
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
                     </ul>

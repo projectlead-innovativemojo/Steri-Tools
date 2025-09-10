@@ -118,11 +118,11 @@ const AdvisorySlider = () => {
           ))}
         </Swiper>
         {/* Navigation Buttons - Mobile */}
-        <div className="flex justify-center items-center z-10 md:hidden gap-[33px]">
-          <div className="nav-team-left cursor-pointer">
+        <div className="md:hidden md:absolute right-[80px] bottom-[29px] z-10 justify-center items-center mt-5 flex gap-[33px]">
+          <div className="nav-advisory-left cursor-pointer">
             <Image src={navLeft} alt="Previous" width={42} height={42} />
           </div>
-          <div className="nav-team-right cursor-pointer">
+          <div className="nav-advisory-right cursor-pointer">
             <Image src={navRight} alt="Next" width={42} height={42} />
           </div>
         </div>
