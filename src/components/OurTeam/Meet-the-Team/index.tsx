@@ -1,90 +1,120 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Keyboard, Navigation, Scrollbar } from "swiper/modules";
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import Image from "next/image";
 
+import Text from "@/ui/Text";
+import Button from "@/ui/Button";
+
 import "swiper/css";
-import "swiper/css/scrollbar";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 
-import movenextbtn from "@/public/images/team/ArrowCircleRight.svg";
-import moveprevbtn from "@/public/images/team/ArrowCircleRight.svg";
-// import { useState } from "react";
+import michaelTeamMember from "@/public/images/team/Michael Karch.png";
+import leighTeamMember from "@/public/images/team/Leigh Bierdeman.png";
+import chrisTeamMember from "@/public/images/team/Chris Wylie.png";
+import navLeft from "@/public/images/team/ArrowCircleLeft.svg";
+import navRight from "@/public/images/team/ArrowCircleRight.svg";
 
-const TeamSlider = () => {
-  // const [activeIndex, setActiveIndex] = useState(2);
+const teamMembers = [
+  {
+    name: "Michael Karch, MD",
+    image: michaelTeamMember,
+    fullBio: `Board‐certified orthopedic surgeon with over 30 years of clinical expertise in
+trauma, robotic, and navigated hip and knee replacement, and an Adjunct
+Associate Clinical Professor at Georgetown University School of Medicine.
 
-  const swiper = useSwiper();
+A prolific medical innovator and entrepreneur, Dr. Karch holds multiple patents
+and is the co‐inventor of the Smart Drill and SteriTools technologies. He is a
+co-founder at Brava.Health and is the original architect in the S2X-UX Project
+of next-gen surgical robotics. Currently, he is advancing his expertise through
+executive programs in Artificial Intelligence and data analytics at the Harvard
+Business School Business Analytics Program as well as an Executive Degree in
+the Machine Learning Program at MIT.
 
-  const handleprevbtn = () => {
-    swiper?.slidePrev();
-  };
+An internationally recognized educator and author, Dr. Karch has published
+works on AI ethics and healthcare innovation and delivers thought leadership on
+AI’s role in medicine His contributions extend to global disaster medicine—having
+served at Ground Zero after 9/11 and leading medical missions
+worldwide—earning him commendations from U.S. Presidents, the United
+Nations, and multiple foreign governments`,
+  },
+  {
+    name: "Leigh Bierdeman Moss, MS, BSN, RN",
+    image: leighTeamMember,
+    fullBio: `Medical device inventor with over 15 years of frontline and tactical healthcare
+experience. A recognized specialist in infection control, Leigh brings deep
+operational insight into clinical environments, bridging field realities with scalable
+innovation.`,
+  },
+  {
+    name: "Chris Wylie, CST",
+    image: chrisTeamMember,
+    fullBio: `Surgical instrumentation expert and medical device inventor with 25 years of
+experience. Widely regarded as a key opinion leader in aseptic technique, Chris
+combines hands-on clinical mastery with a proven track record in research,
+product design, and procedural innovation.`,
+  },
+];
 
-  const handleNextvbtn = () => {
-    swiper?.slideNext();
-  };
-
-  // const handleSlideChange = (swiper) => {
-  //   setActiveIndex(swiper.activeIndex);
-  // };
-
+export default function TeamSlider() {
   return (
-    <div className="parent-div">
-      <div className="swiper-main-div">
-        <Image
-          className="custom-prev"
-          onClick={handleprevbtn}
-          src={moveprevbtn}
-          alt="moveprevbtn"
-        />
+    <div className="relative w-full max-w-[1237px] mx-auto px-5">
+      {/* Title */}
+      <Text as="h2" className="text-center mb-[73px]">
+        Meet The <span className="text-[#EDD98A]">Team</span>
+      </Text>
 
+      {/* Swiper Container */}
+      <div className="relative mb-[78px] ">
+        {/* Navigation Buttons */}
+        <div className="absolute right-[80px] bottom-[29px] z-10 flex gap-[33px]">
+          <div className="nav-team-left cursor-pointer">
+            <Image src={navLeft} alt="Previous" width={42} height={42} />
+          </div>
+          <div className="nav-team-right cursor-pointer">
+            <Image src={navRight} alt="Next" width={42} height={42} />
+          </div>
+        </div>
         <Swiper
-          // onSlideChange={handleSlideChange}
-          slidesPerView={3}
-          // activeIndex={activeIndex}
-          initialSlide={1}
-          spaceBetween={-70}
-          centeredSlides={true}
-          // slidesPerGroupSkip={3}
-          // scrollbar={true}
-          loop={true}
+          modules={[Navigation]}
           navigation={{
-            nextEl: ".custom-next",
-
-            prevEl: ".custom-prev",
+            nextEl: ".nav-team-right",
+            prevEl: ".nav-team-left",
           }}
-          modules={[Keyboard, Navigation, Scrollbar]}
-          className="mySwiper"
+          loop={true}
+          spaceBetween={50}
+          slidesPerView={1}
         >
-          <SwiperSlide>
-            <div className="outer-div">slide 1</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="outer-div">slide 2</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="outer-div">slide 3</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="outer-div">slide 4</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="outer-div">slide 5</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="outer-div">slide 6</div>
-          </SwiperSlide>
+          {/* Team slides */}
+          {teamMembers.map((member, index) => (
+            <SwiperSlide key={index}>
+              <div className="min-h-[554px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-[110px] border-t-[3px] border-t-[#EDD98A]">
+                <div className="flex-shrink-0 w-full max-w-[300px]">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={300}
+                    height={300}
+                    className="rounded-full object-cover"
+                  />
+                  <p className="text-center text-[18px] leading-[26px] mt-[26px] font-bold max-w-[222px] w-full mx-auto">
+                    {member.name}
+                  </p>
+                </div>
+                <div className="text-white text-sm leading-relaxed max-w-[711px] w-full ">
+                  <Text className="whitespace-pre-line">{member.fullBio}</Text>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
-
-        <Image
-          className="custom-next"
-          onClick={handleNextvbtn}
-          src={movenextbtn}
-          alt="movenextbtn"
-        />
       </div>
+
+      {/* Partner Button */}
+      <Button className="text-white bg-[#14205A] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[67px] mx-auto ">
+        Partner with Us
+      </Button>
     </div>
   );
-};
-
-export default TeamSlider;
+}
