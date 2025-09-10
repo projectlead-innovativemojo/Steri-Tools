@@ -98,9 +98,9 @@ export default function TeamSlider() {
                     height={300}
                     className="rounded-full object-cover"
                   />
-                  <p className="text-center text-[18px] leading-[26px] mt-[26px] font-bold max-w-[222px] w-full mx-auto">
+                  <Text className="text-center mt-[26px] font-bold max-w-[222px] w-full mx-auto">
                     {member.name}
-                  </p>
+                  </Text>
                 </div>
                 <div className="text-white text-sm leading-relaxed max-w-[711px] w-full ">
                   <Text className="whitespace-pre-line">{member.fullBio}</Text>
