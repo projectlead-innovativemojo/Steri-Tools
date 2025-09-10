@@ -5,7 +5,7 @@ import Text from "@/ui/Text";
 const Footer = () => {
   return (
     <footer className="w-full bg-[#14205A] text-white pt-[103px] pb-[135px] px-5">
-      <div className="max-w-[1237px] mx-auto flex flex-col md:flex-row justify-between">
+      <div className="max-w-[1237px] mx-auto flex flex-col md:flex-row justify-between md:px-5">
         {/* About */}
         <div className="flex-1 max-w-[397px] w-full mr-[105px]">
           <Text className="font-montserrat md:text-[28px] md:leading-[34px] tracking-[-0.25%] font-medium mb-[20px]">
