@@ -99,7 +99,7 @@ const StoryInfo = () => {
         healthcare—one surgery at a time
       </Text>
 
-      <Button className="text-white bg-[#14205A] max-w-[260px] h-[60px] border border-[#14205A] mb-[107px] mx-auto ">
+      <Button className="text-white bg-[#14205A] max-w-[260px] h-[60px] border-2 border-[#EDD98A] mb-[107px] mx-auto ">
         Invest in SteriTools
       </Button>
     </div>
