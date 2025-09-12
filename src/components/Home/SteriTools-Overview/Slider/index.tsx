@@ -18,7 +18,7 @@ import scisso2beforesoak from "@/public/images/home/scissor-2-before.svg";
 import scisso2aftersoak from "@/public/images/home/scissor-2-after.svg";
 import navLeft from "@/public/images/team/ArrowCircleLeft.svg";
 import navRight from "@/public/images/team/ArrowCircleRight.svg";
-import ringsOverlay from "@/public/images/home/circle-rings.svg";
+// import ringsOverlay from "@/public/images/home/circle-rings.svg";
 
 const slides = [
   { before: nailbeforesoak, after: nailafteresoak },

@@ -5,7 +5,7 @@ import { Navigation } from "swiper/modules";
 import Image from "next/image";
 
 import Text from "@/ui/Text";
-import Button from "@/ui/Button";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -128,9 +128,12 @@ export default function TeamSlider() {
       </div>
 
       {/* Partner Button */}
-      <Button className="text-white bg-[#14205A] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[67px] mx-auto ">
+      {/* <Button className="text-white bg-[#14205A] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[67px] mx-auto ">
         Partner with Us
-      </Button>
+      </Button> */}
+      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[67px]">
+        Partner with Us
+      </ShimmerButton>
     </div>
   );
 }

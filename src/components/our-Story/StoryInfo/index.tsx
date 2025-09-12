@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import Text from "@/ui/Text";
-import Button from "@/ui/Button";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 import shapes from "@/public/images/story/Shapes.png";
 import yellowshapes from "@/public/images/story/yellow-shapes.svg";
@@ -100,9 +100,13 @@ const StoryInfo = () => {
         surgery at a time
       </Text>
 
-      <Button className="text-white bg-[#076F26] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[101px] md:mb-[107px] mx-auto ">
+      {/* <Button className="text-white bg-[#076F26] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[101px] md:mb-[107px] mx-auto ">
         Invest in SteriTools
-      </Button>
+      </Button> */}
+
+      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[101px]">
+        Invest in SteriTools
+      </ShimmerButton>
     </div>
   );
 };

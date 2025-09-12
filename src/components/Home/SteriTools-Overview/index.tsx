@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 import Text from "@/ui/Text";
-import Button from "@/ui/Button";
 import SurgicalInstrumentsSlider from "./Slider";
 
 import ringsOverlay from "@/public/images/home/circle-rings.svg";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 const SteriToolsOverview = () => {
   return (
@@ -56,10 +56,18 @@ const SteriToolsOverview = () => {
           solution for enhancing surgical efficiency and safety across various
           settings.
         </Text>
-
-        <Button className="px-[18px] py-[15px] md:max-w-[290px] text-[16px]  h-15 mx-auto text-[#fff] bg-[#076F26] border-2 border-[#EDD98A]">
+        {/* 
+        <div className="flex justify-center items-center w-full">
+          <Button
+            shimmerBorder
+            className="px-[18px] py-[15px] w-[290px] text-[16px] h-15 mx-auto text-[#fff] bg-[#076F26]"
+          >
+            Invest in SteriTools
+          </Button>
+        </div> */}
+        <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px]">
           Invest in SteriTools
-        </Button>
+        </ShimmerButton>
       </div>
     </div>
   );

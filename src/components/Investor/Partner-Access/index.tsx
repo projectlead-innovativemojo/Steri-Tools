@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import Button from "@/ui/Button";
 import Text from "@/ui/Text";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 import deviceImg from "@/public/images/investor/invester-portal-device.png";
 import yellowRing from "@/public/images/investor/yellow-double-ring.svg";
@@ -40,9 +40,13 @@ const PartnerAccess = () => {
         className="w-full max-w-[382px] mx-auto"
       />
 
-      <Button className="text-white bg-[#14205A] max-w-[260px] h-[60px] border-2 border-[#EDD98A] mt-[90px] mx-auto cursor-pointer">
+      {/* <Button className="text-white bg-[#14205A] max-w-[260px] h-[60px] border-2 border-[#EDD98A] mt-[90px] mx-auto cursor-pointer">
         Access the Folder
-      </Button>
+      </Button> */}
+
+      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px]">
+        Access the Folder
+      </ShimmerButton>
 
       <div className="flex items-center justify-between max-w-[751px] w-full mx-auto mt-[28px] md:mt-[0]">
         <Image
