@@ -46,7 +46,7 @@ const SteriToolsOverview = () => {
         </Text>
         <SurgicalInstrumentsSlider />
       </div>
-      <div className="px-5">
+      <div className="px-5 md:px-0">
         <Text className="w-full mb-[59px] md:mb-[56px]">
           Introducing <span className="text-[#EDD98A]">SteriBasin Go</span>, an
           innovative solution engineered to enhance surgical protocols by
