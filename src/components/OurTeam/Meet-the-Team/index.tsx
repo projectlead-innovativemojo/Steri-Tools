@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
+import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
@@ -132,9 +133,13 @@ export default function TeamSlider() {
       </div>
 
       {/* Partner Button */}
-      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[67px]">
-        Partner with Us
-      </ShimmerButton>
+      <div className="w-[290px] mx-auto">
+        <Link href="/contact-us">
+          <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[67px]">
+            Partner with Us
+          </ShimmerButton>
+        </Link>
+      </div>
     </div>
   );
 }

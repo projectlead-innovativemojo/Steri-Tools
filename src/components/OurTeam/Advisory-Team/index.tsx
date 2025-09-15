@@ -20,6 +20,18 @@ import ringsBg from "@/public/images/team/cirular-rings.svg";
 
 const advisoryMembers = [
   {
+    name: "Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of EEE Corp and World Economic Forum contributor",
+    image: NeginAdvisoryMember,
+    fullBio: `Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of
+EEE Corp and World Economic Forum contributor, serves as lead strategic
+advisor to SteriTools. She built EEE into the only private entity mandated to
+catalyze cross-border healthcare innovation, overseeing a $22B device launch
+portfolio spanning the U.S. and UK. Through her leadership and EEE’s formal
+MoU with the Henry M. Jackson Foundation (HJF), SteriTools gains a direct
+pathway to world-class lab validation, clinical testing, and accelerated integration
+into military and civilian health systems.`,
+  },
+  {
     name: "Charles Brooks, MBA – Henley School of Business trained EEE Senior Partner.",
     image: CharlesAdvisoryMember,
     fullBio: `Mechanical engineer and medical device industry veteran with multiple
@@ -55,18 +67,6 @@ Practitioners (IILP) and Director & Convenor of the UK Parliamentary Group
 on Licensing. A recognized authority on global intellectual property strategy and
 licensing frameworks, Nigel brings high-level policy insight and international
 licensing governance expertise to EEE.`,
-  },
-  {
-    name: "Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of EEE Corp and World Economic Forum contributor",
-    image: NeginAdvisoryMember,
-    fullBio: `Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of
-EEE Corp and World Economic Forum contributor, serves as lead strategic
-advisor to SteriTools. She built EEE into the only private entity mandated to
-catalyze cross-border healthcare innovation, overseeing a $22B device launch
-portfolio spanning the U.S. and UK. Through her leadership and EEE’s formal
-MoU with the Henry M. Jackson Foundation (HJF), SteriTools gains a direct
-pathway to world-class lab validation, clinical testing, and accelerated integration
-into military and civilian health systems.`,
   },
 ];
 
