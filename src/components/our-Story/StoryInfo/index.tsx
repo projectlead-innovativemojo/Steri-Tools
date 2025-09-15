@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
@@ -100,9 +101,17 @@ const StoryInfo = () => {
         surgery at a time
       </Text>
 
-      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[101px]">
+      {/* <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[101px]">
         Invest in SteriTools
-      </ShimmerButton>
+      </ShimmerButton> */}
+
+      <div className="w-[183px] md:w-[290px]  mx-auto">
+        <Link href="/contact-us">
+          <ShimmerButton className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]  mb-[101px]">
+            Invest in SteriTools
+          </ShimmerButton>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
@@ -45,7 +46,7 @@ const SteriToolsOverview = () => {
         </Text>
         <SurgicalInstrumentsSlider />
       </div>
-      <div>
+      <div className="px-5">
         <Text className="w-full mb-[59px] md:mb-[56px]">
           Introducing <span className="text-[#EDD98A]">SteriBasin Go</span>, an
           innovative solution engineered to enhance surgical protocols by
@@ -83,9 +84,14 @@ const SteriToolsOverview = () => {
             Invest in SteriTools
           </Button>
         </div> */}
-        <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px]">
-          Invest in SteriTools
-        </ShimmerButton>
+
+        <div className="w-[183px] md:w-[290px]  mx-auto">
+          <Link href="/contact-us">
+            <ShimmerButton className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]">
+              Invest in SteriTools
+            </ShimmerButton>
+          </Link>
+        </div>
       </div>
     </div>
   );

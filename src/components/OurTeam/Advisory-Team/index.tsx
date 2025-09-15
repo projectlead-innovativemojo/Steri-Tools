@@ -13,18 +13,16 @@ import CharlesAdvisoryMember from "@/public/images/team/Charles-Brooks-advisor.p
 import johnAdvisoryMember from "@/public/images/team/John-Dvor-advisor.png";
 import ArashAdvisoryMember from "@/public/images/team/Arash-Samimi-advisor.png";
 import NigelAdvisoryMember from "@/public/images/team/Nigel-H-advisor.png";
+import NeginAdvisoryMember from "@/public/images/team/negin-advisor.png";
 import navLeft from "@/public/images/team/ArrowCircleLeft.svg";
 import navRight from "@/public/images/team/ArrowCircleRight.svg";
 import ringsBg from "@/public/images/team/cirular-rings.svg";
 
 const advisoryMembers = [
   {
-    name: "Charles Brooks, MBA – Henley School of Business trained EEE Senior Partner.",
-    image: CharlesAdvisoryMember,
-    fullBio: `Mechanical engineer and medical device industry veteran with multiple
-successful exits, serving as Project Manager for the SteriTools project.
- 
-Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of
+    name: "Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of EEE Corp and World Economic Forum contributor",
+    image: NeginAdvisoryMember,
+    fullBio: `Negin Bemanzadeh, MD, MBA, Harvard Business School trained founder of
 EEE Corp and World Economic Forum contributor, serves as lead strategic
 advisor to SteriTools. She built EEE into the only private entity mandated to
 catalyze cross-border healthcare innovation, overseeing a $22B device launch
@@ -32,6 +30,12 @@ portfolio spanning the U.S. and UK. Through her leadership and EEE’s formal
 MoU with the Henry M. Jackson Foundation (HJF), SteriTools gains a direct
 pathway to world-class lab validation, clinical testing, and accelerated integration
 into military and civilian health systems.`,
+  },
+  {
+    name: "Charles Brooks, MBA – Henley School of Business trained EEE Senior Partner.",
+    image: CharlesAdvisoryMember,
+    fullBio: `Mechanical engineer and medical device industry veteran with multiple
+successful exits, serving as Project Manager for the SteriTools project.`,
   },
   {
     name: "John Dvor",
@@ -68,7 +72,7 @@ licensing governance expertise to EEE.`,
 
 const AdvisorySlider = () => {
   return (
-    <div className="relative w-full max-w-[1237px] mx-auto px-5 mb-[115px] ">
+    <div className="relative w-full max-w-[1237px] mx-auto px-5 md:px-0 mb-[115px] ">
       {/* Title */}
       <Text as="h2" className="text-center mb-[85px]">
         Advisory <span className="text-[#EDD98A]">Team</span>
@@ -113,7 +117,7 @@ const AdvisorySlider = () => {
                     height={300}
                     className="rounded-full object-cover"
                   />
-                  <Text className="text-center mt-[26px] font-bold max-w-[278px] w-full mx-auto">
+                  <Text className="text-center mt-[26px] font-bold max-w-[278px] w-full mx-auto whitespace-normal">
                     {member.name}
                   </Text>
                 </div>

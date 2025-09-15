@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Text from "@/ui/Text";
 import Button from "@/ui/Button";
@@ -131,8 +132,10 @@ const WhyNowSection = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-[50px] pb-[66px] md:pb-[94px]">
-          <Button className="px-6 py-3 w-[186px]  mx-auto">Learn More</Button>
+        <div className="mt-[50px] pb-[66px] md:pb-[94px] w-[186px] mx-auto">
+          <Link href="/our-story" className=" ">
+            <Button className="px-6 py-3 w-[186px]  ">Learn More</Button>
+          </Link>
         </div>
       </div>
     </div>
