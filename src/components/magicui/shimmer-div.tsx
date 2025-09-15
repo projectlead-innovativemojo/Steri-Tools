@@ -31,7 +31,7 @@ export const ShimmerDiv = React.forwardRef<
     ref
   ) => {
     return (
-      <button
+      <div
         style={
           {
             "--spread": "90deg",
@@ -68,7 +68,7 @@ export const ShimmerDiv = React.forwardRef<
         {/* Highlight */}
         <div
           className={cn(
-            "insert-0 absolute size-full",
+            "inset-0 absolute size-full",
 
             "rounded-[8px] px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#ffffff1f]",
 
@@ -89,7 +89,7 @@ export const ShimmerDiv = React.forwardRef<
             "absolute -z-20 [background:var(--bg)]  [inset:var(--cut)]"
           )}
         />
-      </button>
+      </div>
     );
   }
 );

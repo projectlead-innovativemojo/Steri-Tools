@@ -179,3 +179,12 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 767px) {
+  .clamp-mobile {
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* adjust lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

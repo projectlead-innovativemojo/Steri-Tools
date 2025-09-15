@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
@@ -8,10 +9,12 @@ import Link from "next/link";
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { ShimmerDiv } from "@/components/magicui/shimmer-div";
+import { cn } from "@/lib/utils";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
+// Team images
 import michaelTeamMember from "@/public/images/team/Michael Karch.png";
 import leighTeamMember from "@/public/images/team/Leigh Bierdeman.png";
 import chrisTeamMember from "@/public/images/team/Chris Wylie.png";
@@ -37,10 +40,10 @@ the Machine Learning Program at MIT.
 
 An internationally recognized educator and author, Dr. Karch has published
 works on AI ethics and healthcare innovation and delivers thought leadership on
-AI’s role in medicine His contributions extend to global disaster medicine—having
+AI’s role in medicine. His contributions extend to global disaster medicine—having
 served at Ground Zero after 9/11 and leading medical missions
 worldwide—earning him commendations from U.S. Presidents, the United
-Nations, and multiple foreign governments`,
+Nations, and multiple foreign governments.`,
   },
   {
     name: "Leigh Bierdeman Moss, MS, BSN, RN",
@@ -61,6 +64,14 @@ product design, and procedural innovation.`,
 ];
 
 export default function TeamSlider() {
+  const [expanded, setExpanded] = useState(
+    Array(teamMembers.length).fill(false)
+  );
+
+  const toggleExpand = (index: number) => {
+    setExpanded((prev) => prev.map((val, i) => (i === index ? !val : val)));
+  };
+
   return (
     <div className="relative w-full max-w-[1237px] px-5 md:px-0 mx-auto">
       {/* Title */}
@@ -69,8 +80,8 @@ export default function TeamSlider() {
       </Text>
 
       {/* Swiper Container */}
-      <div className="relative mb-[78px] ">
-        {/* Navigation Buttons */}
+      <div className="relative mb-[78px]">
+        {/* Navigation Buttons (desktop) */}
         <div className="hidden md:absolute right-[80px] bottom-[29px] z-10 md:flex gap-[33px]">
           <div className="nav-team-left cursor-pointer">
             <Image src={navLeft} alt="Previous" width={42} height={42} />
@@ -79,6 +90,7 @@ export default function TeamSlider() {
             <Image src={navRight} alt="Next" width={42} height={42} />
           </div>
         </div>
+
         <Swiper
           modules={[Navigation]}
           navigation={{
@@ -89,16 +101,18 @@ export default function TeamSlider() {
           spaceBetween={50}
           slidesPerView={1}
         >
-          {/* Team slides */}
           {teamMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <ShimmerDiv className="relative w-full max-w-[1240px] md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px]">
+              {/* For Desktop */}
+              <ShimmerDiv className="relative w-full max-w-[1240px]  md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0  flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px] hidden md:flex">
                 {/* Rings BG */}
                 <Image
                   src={ringsBg}
                   alt="Rings Background"
                   className="absolute object-contain pointer-events-none left-[45px] top-[24px] hidden lg:block"
                 />
+
+                {/* Member Image + Name */}
                 <div className="flex-shrink-0 w-full max-w-[300px]">
                   <Image
                     src={member.image}
@@ -107,21 +121,71 @@ export default function TeamSlider() {
                     height={300}
                     className="rounded-full object-cover"
                   />
-                  <Text
-                    className="text-center mt-[26px] font-bold max-w-[222px] w-full mx-auto whitespace-normal
-"
-                  >
+                  <Text className="text-center mt-[26px] text-wrap  font-bold max-w-[222px] w-full mx-auto">
                     {member.name}
                   </Text>
                 </div>
-                <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full text-left">
-                  <Text className="whitespace-pre-line">{member.fullBio}</Text>
+
+                {/* Bio */}
+                <div className="text-white text-sm  leading-relaxed px-4 max-w-[711px] w-full text-left">
+                  <Text className={"whitespace-pre-line"}>
+                    {member.fullBio}
+                  </Text>
                 </div>
               </ShimmerDiv>
+
+              {/* For Mobile */}
+              <div className="relative w-full min-h-[632.7px] justify-center max-w-[1240px] md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row md:justify-end items-center gap-10 md:gap-[94px]  md:hidden">
+                {/* Rings BG */}
+                <Image
+                  src={ringsBg}
+                  alt="Rings Background"
+                  className="absolute object-contain pointer-events-none left-[45px] top-[24px] hidden lg:block"
+                />
+
+                {/* Member Image + Name */}
+                <div className="flex-shrink-0 w-full max-w-[300px]">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={300}
+                    height={300}
+                    className="rounded-full object-cover"
+                  />
+                  <Text className="text-center mt-[26px] font-bold max-w-[222px] w-full mx-auto">
+                    {member.name}
+                  </Text>
+                </div>
+
+                {/* Bio */}
+                <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full text-left">
+                  <Text
+                    className={`whitespace-pre-line ${
+                      expanded[index] ? "" : "clamp-mobile"
+                    }`}
+                  >
+                    {member.fullBio}
+                  </Text>
+
+                  {/* Read More / Less (mobile only) */}
+                  {member.fullBio.length > 240 && (
+                    <button
+                      onClick={() => toggleExpand(index)}
+                      className={cn(
+                        "mt-3 text-[#EDD98A] font-semibold underline hidden",
+                        member.fullBio.length > 290 && "block"
+                      )}
+                    >
+                      {expanded[index] ? "Show less" : "Read more"}
+                    </button>
+                  )}
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* Navigation Buttons - Mobile */}
+
+        {/* Navigation Buttons (mobile) */}
         <div className="flex justify-center items-center mt-5 z-10 md:hidden gap-[33px]">
           <div className="nav-team-left cursor-pointer">
             <Image src={navLeft} alt="Previous" width={42} height={42} />
