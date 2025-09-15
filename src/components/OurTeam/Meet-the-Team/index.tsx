@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { ShimmerDiv } from "@/components/magicui/shimmer-div";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -60,7 +61,7 @@ product design, and procedural innovation.`,
 
 export default function TeamSlider() {
   return (
-    <div className="relative w-full max-w-[1237px] mx-auto px-5">
+    <div className="relative w-full max-w-[1237px] mx-auto">
       {/* Title */}
       <Text as="h2" className="text-center mb-[73px]">
         Meet The <span className="text-[#EDD98A]">Team</span>
@@ -90,7 +91,7 @@ export default function TeamSlider() {
           {/* Team slides */}
           {teamMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <div className="relative md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[110px] border-t-[3px] border-t-[#EDD98A]">
+              <ShimmerDiv className="relative w-full max-w-[1240px] md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px]">
                 {/* Rings BG */}
                 <Image
                   src={ringsBg}
@@ -109,10 +110,10 @@ export default function TeamSlider() {
                     {member.name}
                   </Text>
                 </div>
-                <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full ">
+                <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full text-left">
                   <Text className="whitespace-pre-line">{member.fullBio}</Text>
                 </div>
-              </div>
+              </ShimmerDiv>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -128,9 +129,6 @@ export default function TeamSlider() {
       </div>
 
       {/* Partner Button */}
-      {/* <Button className="text-white bg-[#14205A] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[67px] mx-auto ">
-        Partner with Us
-      </Button> */}
       <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[67px]">
         Partner with Us
       </ShimmerButton>

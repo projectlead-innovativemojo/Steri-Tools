@@ -1,14 +1,18 @@
 "use client";
 
+import Text from "@/components/ui/Text";
+
 export default function ContactForm() {
   return (
-    <form className="space-y-5">
+    <form className="space-y-[24px]">
       {/* Heading */}
-      <div>
-        <h3 className="text-xl font-semibold text-gray-900">Get in touch</h3>
-        <p className="mt-1 text-sm text-gray-500">
+      <div className="mb-[48px] text-center md:text-left">
+        <Text className="text-[28px] md:text-[28px] leading-[34px] md:leading-[34px]   font-medium ">
+          Get in touch
+        </Text>
+        <Text className="mt-5 text-[18px] leading-[26px] text-[#6D6D6D]">
           Our team would love to hear from you.
-        </p>
+        </Text>
       </div>
 
       {/* Name */}
@@ -23,7 +27,7 @@ export default function ContactForm() {
           type="text"
           id="name"
           placeholder="Name"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+          className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
 
@@ -39,7 +43,7 @@ export default function ContactForm() {
           type="email"
           id="email"
           placeholder="you@company.com"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+          className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
 
@@ -61,7 +65,7 @@ export default function ContactForm() {
             type="number"
             id="phone"
             placeholder="+1 (555) 000-0000"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+            className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
           />
         </div>
       </div>
@@ -78,7 +82,7 @@ export default function ContactForm() {
           type="text"
           id="company"
           placeholder="Name company"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+          className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
 
@@ -94,20 +98,23 @@ export default function ContactForm() {
           id="message"
           rows={4}
           placeholder="Message"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+          className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
 
       {/* Privacy Policy */}
-      <div className="flex items-start">
+      <div className="flex items-center ">
         <input
           type="checkbox"
           id="policy"
-          className="mt-1 h-4 w-4 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
+          className="h-4 w-4 rounded-md md:border-[#D5D7DA] text-yellow-500 focus:ring-yellow-400"
         />
-        <label htmlFor="policy" className="ml-2 text-sm text-gray-600">
+        <label
+          htmlFor="policy"
+          className="ml-3 text-[16px] leading-[26px] text-[#6D6D6D]"
+        >
           You agree to our friendly{" "}
-          <a href="#" className="text-yellow-600 hover:underline">
+          <a href="#" className="underline">
             privacy policy
           </a>
           .
@@ -117,7 +124,7 @@ export default function ContactForm() {
       {/* Button */}
       <button
         type="submit"
-        className="w-full rounded-md bg-[#EDD98A] py-2 px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-[#e3cd73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        className="w-full rounded-md bg-[#EDD98A] mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#e3cd73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
       >
         Send message
       </button>

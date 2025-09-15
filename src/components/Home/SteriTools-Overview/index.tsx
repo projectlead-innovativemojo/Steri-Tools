@@ -2,21 +2,39 @@ import React from "react";
 import Image from "next/image";
 
 import Text from "@/ui/Text";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import SurgicalInstrumentsSlider from "./Slider";
 
 import ringsOverlay from "@/public/images/home/circle-rings.svg";
-import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import yellowDoubleRing from "@/public/images/home/yellow-double-ring.svg";
+import yellowBlueRing from "@/public/images/home/blue-yellow-ring.svg";
 
 const SteriToolsOverview = () => {
   return (
     <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mb-[90px] md:mb-[55px]">
-      <div className="relative flex justify-center md:flex-row flex-col items-center px-5 md: md:py-0 py-5 gap-0 mt-[91px] md:mt-[79px] mb-[52px] md:mb-[60px] bg-[#14205A] w-full max-w-[1240px] min-h-[554px] rounded-[24px]">
+      <div className="relative flex justify-center md:flex-row flex-col items-center px-5 md: md:py-0 pt-[160px] pb-[181px] gap-0 mt-[91px] md:mt-[79px] mb-[52px] md:mb-[60px] bg-[#14205A] w-full max-w-[1240px] min-h-[554px] rounded-[24px]">
+        {/* Desktop Screen Cirular Rings */}
         <Image
           src={ringsOverlay}
           alt="Rings Background"
           className="absolute object-cover pointer-events-none left-[80px] top-[27px] hidden lg:block"
         />
-        <Text className="text-white w-full max-w-[503px] font-bold">
+
+        {/* Mobile Screen Yellow Cirular Ring */}
+        <Image
+          src={yellowDoubleRing}
+          alt="Ring Bg"
+          className="z-0 absolute object-cover pointer-events-none max-w-[94px] left-[32px] top-[23px] block lg:hidden"
+        />
+
+        {/* Mobile Screen Yellow Blue Cirular Ring */}
+        <Image
+          src={yellowBlueRing}
+          alt="Ring Bg"
+          className="z-0 absolute object-cover pointer-events-none max-w-[94px] right-[28px] bottom-[54px] block lg:hidden"
+        />
+
+        <Text className="z-10 text-white w-full max-w-[503px] text-[18px] text-center md:text-left font-medium md:font-bold mb-[43px] md:mb-[0]">
           <span className="text-[#EDD98A]"> SteriBasin Go: </span> A simple
           solution that solves a complex problem. <br />
           If {`you're`} a surgeon, veteran, OR staff, or forward surgical team,

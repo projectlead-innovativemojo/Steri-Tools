@@ -100,10 +100,6 @@ const StoryInfo = () => {
         surgery at a time
       </Text>
 
-      {/* <Button className="text-white bg-[#076F26] max-w-[290px] h-[60px] border-2 border-[#EDD98A] mb-[101px] md:mb-[107px] mx-auto ">
-        Invest in SteriTools
-      </Button> */}
-
       <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[101px]">
         Invest in SteriTools
       </ShimmerButton>

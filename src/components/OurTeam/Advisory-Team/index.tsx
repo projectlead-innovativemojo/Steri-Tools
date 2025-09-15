@@ -3,11 +3,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
-
-import Text from "@/ui/Text";
-
 import "swiper/css";
 import "swiper/css/navigation";
+
+import Text from "@/ui/Text";
+import { ShimmerDiv } from "@/components/magicui/shimmer-div";
 
 import CharlesAdvisoryMember from "@/public/images/team/Charles-Brooks-advisor.png";
 import johnAdvisoryMember from "@/public/images/team/John-Dvor-advisor.png";
@@ -98,7 +98,7 @@ const AdvisorySlider = () => {
           {/* Advsiory slides */}
           {advisoryMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <div className="relative md:min-h-[554px] py-5 md:py-0 bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[110px] border-t-[3px] border-t-[#EDD98A]">
+              <ShimmerDiv className="relative md:min-h-[554px] py-5 md:py-0 w-full max-w-[1240px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px]">
                 {/* Rings BG */}
                 <Image
                   src={ringsBg}
@@ -118,9 +118,11 @@ const AdvisorySlider = () => {
                   </Text>
                 </div>
                 <div className="text-white px-4 max-w-[711px] w-full ">
-                  <Text className="whitespace-pre-line">{member.fullBio}</Text>
+                  <Text className="whitespace-pre-line text-left">
+                    {member.fullBio}
+                  </Text>
                 </div>
-              </div>
+              </ShimmerDiv>
             </SwiperSlide>
           ))}
         </Swiper>
