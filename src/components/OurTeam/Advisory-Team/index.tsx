@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
@@ -8,6 +9,7 @@ import "swiper/css/navigation";
 
 import Text from "@/ui/Text";
 import { ShimmerDiv } from "@/components/magicui/shimmer-div";
+import { cn } from "@/lib/utils";
 
 import CharlesAdvisoryMember from "@/public/images/team/Charles-Brooks-advisor.png";
 import johnAdvisoryMember from "@/public/images/team/John-Dvor-advisor.png";
@@ -71,6 +73,14 @@ licensing governance expertise to EEE.`,
 ];
 
 const AdvisorySlider = () => {
+  const [expanded, setExpanded] = useState(
+    Array(advisoryMembers.length).fill(false)
+  );
+
+  const toggleExpand = (index: number) => {
+    setExpanded((prev) => prev.map((val, i) => (i === index ? !val : val)));
+  };
+
   return (
     <div className="relative w-full max-w-[1237px] mx-auto px-5 md:px-0 mb-[115px] ">
       {/* Title */}
@@ -102,13 +112,15 @@ const AdvisorySlider = () => {
           {/* Advsiory slides */}
           {advisoryMembers.map((member, index) => (
             <SwiperSlide key={index}>
-              <ShimmerDiv className="relative md:min-h-[554px] py-5 md:py-0 w-full max-w-[1240px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px]">
+              {/* For Desktop */}
+              <ShimmerDiv className="relative md:min-h-[554px] py-5 md:py-0 w-full max-w-[1240px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 md:flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px] hidden ">
                 {/* Rings BG */}
                 <Image
                   src={ringsBg}
                   alt="Rings Background"
                   className="absolute object-contain pointer-events-none left-[45px] top-[24px] hidden lg:block"
                 />
+                {/* Member Image + Name */}
                 <div className="flex-shrink-0 w-full max-w-[300px]">
                   <Image
                     src={member.image}
@@ -121,12 +133,67 @@ const AdvisorySlider = () => {
                     {member.name}
                   </Text>
                 </div>
-                <div className="text-white px-4 max-w-[711px] w-full ">
-                  <Text className="whitespace-pre-line text-left">
+
+                {/* Bio */}
+                <div className="text-white px-4 max-w-[711px] w-full text-left ">
+                  {/* <Text className="whitespace-pre-line text-left">
+                    {member.fullBio}
+                  </Text> */}
+                  <Text className={"whitespace-pre-line"}>
                     {member.fullBio}
                   </Text>
                 </div>
               </ShimmerDiv>
+
+              {/* For Mobile */}
+              <div className="relative min-h-[706px] justify-center md:min-h-[554px] py-5 md:py-0 w-full max-w-[1240px] bg-[#14205A] text-white rounded-3xl md:p-[21px] md:pr-0 flex flex-col md:flex-row justify-end items-center gap-10 md:gap-[94px] md:hidden">
+                {/* Rings BG */}
+                <Image
+                  src={ringsBg}
+                  alt="Rings Background"
+                  className="absolute object-contain pointer-events-none left-[45px] top-[24px] hidden lg:block"
+                />
+                {/* Member Image + Name */}
+                <div className="flex-shrink-0 w-full max-w-[300px]">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={300}
+                    height={300}
+                    className="rounded-full object-cover"
+                  />
+                  <Text className="text-center mt-[26px] font-bold max-w-[278px] w-full mx-auto whitespace-normal">
+                    {member.name}
+                  </Text>
+                </div>
+
+                {/* Bio */}
+                <div className="text-white px-4 max-w-[711px] w-full text-left ">
+                  {/* <Text className="whitespace-pre-line text-left">
+                    {member.fullBio}
+                  </Text> */}
+                  <Text
+                    className={`whitespace-pre-line ${
+                      expanded[index] ? "" : "clamp-mobile"
+                    }`}
+                  >
+                    {member.fullBio}
+                  </Text>
+
+                  {/* Read More / Less (mobile only) */}
+                  {member.fullBio.length > 240 && (
+                    <button
+                      onClick={() => toggleExpand(index)}
+                      className={cn(
+                        "mt-3 text-[#EDD98A] font-semibold underline hidden",
+                        member.fullBio.length > 290 && "block"
+                      )}
+                    >
+                      {expanded[index] ? "Show less" : "Read more"}
+                    </button>
+                  )}
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
