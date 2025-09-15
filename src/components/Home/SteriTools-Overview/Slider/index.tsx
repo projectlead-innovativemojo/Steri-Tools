@@ -8,8 +8,10 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import nailbeforesoak from "@/public/images/home/nail-before-soak.svg";
-import nailafteresoak from "@/public/images/home/nail-after-soak.svg";
+// import nailbeforesoak from "@/public/images/home/nail-before-soak.svg";
+// import nailafteresoak from "@/public/images/home/nail-after-soak.svg";
+import nailbeforesoak from "@/public/images/home/nail-before-soak.png";
+import nailafteresoak from "@/public/images/home/nail-after-soak.png";
 import scissorbeforesoak from "@/public/images/home/scissor-before.svg";
 import scissoraftersoak from "@/public/images/home/scissor-after.svg";
 import microbialbeforesoak from "@/public/images/home/micobial-before.svg";
@@ -49,7 +51,7 @@ const SurgicalInstrumentsSlider = () => {
                     alt="Before soaking in basin with water"
                     width={240}
                     height={240}
-                    className="w-full h-[286px]"
+                    className="w-full h-[286px] object-contain"
                   />
                   <p className="text-center text-xs mt-2">
                     Before soaking in basin with water
@@ -61,7 +63,7 @@ const SurgicalInstrumentsSlider = () => {
                     alt="After SteriBasin Go"
                     width={240}
                     height={240}
-                    className="w-full h-[286px] "
+                    className="w-full h-[286px] object-contain"
                   />
                   <p className="text-center text-xs mt-2">
                     After SteriBasin Go
