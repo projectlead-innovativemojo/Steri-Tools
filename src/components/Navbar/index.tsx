@@ -80,11 +80,11 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-              <a href="/our-partners">
+              <Link href="/our-partners">
                 <Button className="p-[10px] w-[156px] h-10">
                   Partner with Us
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Mobile hamburger + drawer (mobile only) */}
