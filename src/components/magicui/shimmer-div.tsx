@@ -31,7 +31,7 @@ export const ShimmerDiv = React.forwardRef<
     ref
   ) => {
     return (
-      <div
+      <section
         style={
           {
             "--spread": "90deg",
@@ -89,7 +89,7 @@ export const ShimmerDiv = React.forwardRef<
             "absolute -z-20 [background:var(--bg)]  [inset:var(--cut)]"
           )}
         />
-      </div>
+      </section>
     );
   }
 );

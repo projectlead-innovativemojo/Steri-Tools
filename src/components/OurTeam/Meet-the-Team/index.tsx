@@ -80,7 +80,7 @@ export default function TeamSlider() {
       </Text>
 
       {/* Swiper Container */}
-      <div className="relative mb-[78px]">
+      <div className="relative mb-[60px] md:mb-[78px]">
         {/* Navigation Buttons (desktop) */}
         <div className="hidden md:absolute right-[80px] bottom-[29px] z-10 md:flex gap-[33px]">
           <div className="nav-team-left cursor-pointer">

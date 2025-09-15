@@ -80,9 +80,9 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-              <Link href="/our-partners">
-                <Button className="p-[10px] w-[156px] h-10">
-                  Partner with Us
+              <Link href="/investor">
+                <Button className="p-[10px] w-[206px] h-10">
+                  Investor Resources
                 </Button>
               </Link>
             </div>
@@ -149,9 +149,9 @@ const Navbar = () => {
                       </a>
                       <hr className="h-px my- bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
 
-                      <a href="/our-partners" className="px-5">
+                      <a href="/investor" className="px-5">
                         <Button className="p-[15px] w-full my-5 mx-auto h-[50px] uppercase">
-                          Partner with Us
+                          Investor Resources
                         </Button>
                       </a>
 
