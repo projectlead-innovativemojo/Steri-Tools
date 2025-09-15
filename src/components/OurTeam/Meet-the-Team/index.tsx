@@ -61,7 +61,7 @@ product design, and procedural innovation.`,
 
 export default function TeamSlider() {
   return (
-    <div className="relative w-full max-w-[1237px] mx-auto">
+    <div className="relative w-full max-w-[1237px] px-5 md:px-0 mx-auto">
       {/* Title */}
       <Text as="h2" className="text-center mb-[73px]">
         Meet The <span className="text-[#EDD98A]">Team</span>
@@ -106,7 +106,10 @@ export default function TeamSlider() {
                     height={300}
                     className="rounded-full object-cover"
                   />
-                  <Text className="text-center mt-[26px] font-bold max-w-[222px] w-full mx-auto">
+                  <Text
+                    className="text-center mt-[26px] font-bold max-w-[222px] w-full mx-auto whitespace-normal
+"
+                  >
                     {member.name}
                   </Text>
                 </div>
