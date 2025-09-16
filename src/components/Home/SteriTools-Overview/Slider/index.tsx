@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
+import { cn } from "@/lib/utils";
 
 // import nailbeforesoak from "@/public/images/home/nail-before-soak.svg";
 // import nailafteresoak from "@/public/images/home/nail-after-soak.svg";
@@ -22,9 +23,9 @@ import navLeft from "@/public/images/team/ArrowCircleLeft.svg";
 import navRight from "@/public/images/team/ArrowCircleRight.svg";
 
 const slides = [
+  { before: microbialbeforesoak, after: microbialaftersoak },
   { before: nailbeforesoak, after: nailafteresoak },
   { before: scissorbeforesoak, after: scissoraftersoak },
-  { before: microbialbeforesoak, after: microbialaftersoak },
   { before: scisso2beforesoak, after: scisso2aftersoak },
 ];
 
@@ -53,8 +54,10 @@ const SurgicalInstrumentsSlider = () => {
                     height={240}
                     className="w-full h-[286px] object-contain"
                   />
-                  <p className="text-center text-xs mt-2">
-                    Before soaking in basin with water
+                  <p className="text-center text-xs mt-2 max-w-[184px] mx-auto">
+                    Before:
+                    <br />
+                    Instruments soaked in water
                   </p>
                 </div>
                 <div className="flex flex-col items-center">
@@ -63,10 +66,14 @@ const SurgicalInstrumentsSlider = () => {
                     alt="After SteriBasin Go"
                     width={240}
                     height={240}
-                    className="w-full h-[286px] object-contain"
+                    className={cn(
+                      "w-full h-[286px] object-contain",
+                      index === 0 && "w-[90%]"
+                    )}
                   />
-                  <p className="text-center text-xs mt-2">
-                    After SteriBasin Go
+                  <p className="text-center text-xs mt-2 max-w-[183px] mx-auto">
+                    After: <br />
+                    Cleaned and desinfected in SteriBasin Go
                   </p>
                 </div>
               </div>
