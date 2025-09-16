@@ -1,9 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
+
+import InvestPopupForm from "@/components/Invest-Pop-Up";
 
 import shapes from "@/public/images/story/Shapes.png";
 import yellowshapes from "@/public/images/story/yellow-shapes.svg";
@@ -11,6 +14,9 @@ import info1 from "@/public/images/story/info-image-1.png";
 import info2 from "@/public/images/story/info2.png";
 
 const StoryInfo = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const closeModal = () => setOpenModal(false);
+
   return (
     <div className="w-full max-w-[1237px] px-5 mx-auto ">
       <div className="w-full flex flex-col md:flex-row md:items-center items-start gap-[37px] md:gap-[30px] md:mb-[104px] mb-[47px]">
@@ -106,12 +112,23 @@ const StoryInfo = () => {
       </ShimmerButton> */}
 
       <div className="w-[183px] md:w-[290px]  mx-auto">
-        <Link href="/contact-us">
-          <ShimmerButton className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]  mb-[101px]">
-            Invest in SteriTools
-          </ShimmerButton>
-        </Link>
+        <ShimmerButton
+          onClick={() => setOpenModal(true)}
+          className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]  mb-[101px]"
+        >
+          Invest in SteriTools
+        </ShimmerButton>
       </div>
+
+      {/* Invest Form Popup Modal */}
+      {openModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50">
+          {/* <InvestPopupForm closeModal={closeModal} /> */}
+          <div className="w-full max-h-[90vh] md:max-h-[100vh] overflow-y-auto hide-scrollbar flex py-5 items-start md:justify-center md:items-center">
+            <InvestPopupForm closeModal={closeModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

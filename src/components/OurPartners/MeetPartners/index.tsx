@@ -31,7 +31,7 @@ const MeetPatrtners = () => {
           "
         />
         <div className="w-full md:max-w-[987px] mx-auto flex justify-center md:justify-between items-center z-10">
-          <div className="flex gap-[49px] items-center py-[30px] md:flex-row flex-col">
+          <div className="flex gap-[49px] items-center py-[30px] md:flex-row flex-col z-10">
             <Image
               src={eee}
               alt="eee"
@@ -86,6 +86,7 @@ const MeetPatrtners = () => {
             {showContent ? "Read Less" : "Read More"}
           </Button>
         </div>
+
         {/* BlueYellow Rings BG */}
         <Image
           src={blueYellowRing}

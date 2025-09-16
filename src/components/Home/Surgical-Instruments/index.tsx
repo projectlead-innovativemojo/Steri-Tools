@@ -19,7 +19,7 @@ const SurgicalInstruments = () => {
       <Image
         src={germsBg}
         alt="image"
-        className="absolute z-0 object-contain pointer-events-none left-[55px] top-[19%] md:top-[0px]"
+        className="absolute z-0 object-contain pointer-events-none left-0 md:left-[55px] top-[19%] md:top-[0px]"
       />
       <div className="w-full flex justify-center flex-col-reverse  md:flex-row  md:gap-[55px] gap-[0] items-center md:items-start mb-[50px] md:mb-[37px]">
         <div className="z-10 w-full max-w-[789px] text-center md:text-left">
