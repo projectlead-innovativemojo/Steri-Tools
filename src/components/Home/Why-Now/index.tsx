@@ -133,7 +133,7 @@ const WhyNowSection = () => {
 
         {/* CTA Button */}
         <div className="mt-[50px] pb-[66px] md:pb-[94px] w-[186px] mx-auto">
-          <Link href="/our-story" className=" ">
+          <Link href="/contact-us" className=" ">
             <Button className="px-6 py-3 w-[186px]  ">Learn More</Button>
           </Link>
         </div>
