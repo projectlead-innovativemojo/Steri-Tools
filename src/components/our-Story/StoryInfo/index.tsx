@@ -122,8 +122,11 @@ const StoryInfo = () => {
 
       {/* Invest Form Popup Modal */}
       {openModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
-          <InvestPopupForm closeModal={closeModal} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50">
+          {/* <InvestPopupForm closeModal={closeModal} /> */}
+          <div className="w-full max-h-[90vh] md:max-h-[100vh] overflow-y-auto hide-scrollbar flex py-5 items-start md:justify-center md:items-center">
+            <InvestPopupForm closeModal={closeModal} />
+          </div>
         </div>
       )}
     </div>

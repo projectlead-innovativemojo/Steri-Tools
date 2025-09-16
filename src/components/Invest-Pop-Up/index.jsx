@@ -21,7 +21,7 @@ export default function InvestPopupForm({ closeModal }) {
             {/* Close button */}
             <button
                 onClick={closeModal}
-                className="absolute top-[23px] md:top-[40px] right-[26px] md:right-[58px]"
+                className="absolute top-[23px] md:top-[40px] right-[26px] md:right-[58px] cursor-pointer"
             >
                 <Image
                     src={closeBtn}
