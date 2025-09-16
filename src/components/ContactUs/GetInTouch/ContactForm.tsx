@@ -1,20 +1,53 @@
 "use client";
-
+import { useState } from "react";
 import Text from "@/components/ui/Text";
-
 export default function ContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch("/api/contactForm", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, name, message, phone, company }),
+      });
+      // Check status before parsing
+      if (!response.ok) {
+        const errText = await response.text(); // might be HTML
+        throw new Error(`Request failed: ${response.status} ${errText}`);
+      }
+      // Only parse JSON if your route returns JSON
+      // const data = await response.json();
+      alert("Email sent successfully!");
+      setEmail("");
+      setName("");
+      setMessage("");
+      setPhone("");
+      setCompany("");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
-    <form className="space-y-[24px]">
+    <form className="space-y-[24px]" onSubmit={submitForm}>
       {/* Heading */}
       <div className="mb-[48px] text-center md:text-left">
-        <Text className="text-[28px] md:text-[28px] leading-[34px] md:leading-[34px]   font-medium ">
+        <Text className="text-[28px] md:text-[28px] leading-[34px] md:leading-[34px] font-medium ">
           Get in touch
         </Text>
         <Text className="mt-5 text-[18px] leading-[26px] text-[#6D6D6D]">
           Our team would love to hear from you.
         </Text>
       </div>
-
       {/* Name */}
       <div>
         <label
@@ -27,10 +60,12 @@ export default function ContactForm() {
           type="text"
           id="name"
           placeholder="Name"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
-
       {/* Email */}
       <div>
         <label
@@ -42,11 +77,13 @@ export default function ContactForm() {
         <input
           type="email"
           id="email"
+          required
           placeholder="you@company.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
-
       {/* Phone */}
       <div>
         <label
@@ -55,21 +92,16 @@ export default function ContactForm() {
         >
           Phone number
         </label>
-        <div className="flex">
-          {/* <select className="rounded-l-md border border-gray-300 bg-gray-50 px-2 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400">
-            <option>US</option>
-            <option>UK</option>
-            <option>PK</option>
-          </select> */}
-          <input
-            type="text"
-            id="phone"
-            placeholder="+1 (555) 000-0000"
-            className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
-          />
-        </div>
+        <input
+          type="tel"
+          id="phone"
+          required
+          placeholder="+1 (555) 000-0000"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+        />
       </div>
-
       {/* Company */}
       <div>
         <label
@@ -81,11 +113,13 @@ export default function ContactForm() {
         <input
           type="text"
           id="company"
+          required
           placeholder="Name company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
           className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
-
       {/* Message */}
       <div>
         <label
@@ -98,10 +132,12 @@ export default function ContactForm() {
           id="message"
           rows={4}
           placeholder="Message"
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
         />
       </div>
-
       {/* Privacy Policy */}
       <div className="flex items-center ">
         <input
@@ -120,13 +156,11 @@ export default function ContactForm() {
           .
         </label>
       </div>
-
-      {/* Button */}
       <button
         type="submit"
-        className="w-full rounded-md bg-[#EDD98A] mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#e3cd73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        className="w-full rounded-md bg-[#EDD98A] mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#E3CD73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
       >
-        Send message
+        {loading ? "Sending..." : "Send Message"}
       </button>
     </form>
   );
