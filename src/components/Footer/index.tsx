@@ -28,13 +28,23 @@ const Footer = () => {
           </Text>
           <ul>
             <li>
-              <Text>Austin, TX</Text>
+              <a href="mailto:mlbierdeman@gmail.com">
+                <Text className="hover:underline">mlbierdeman@gmail.com</Text>
+              </a>
             </li>
             <li>
-              <Text>+1 512 924 8193</Text>
+              <a href="mailto:mkarchmanmothortho@gmail.com">
+                <Text className="hover:underline">
+                  mkarchmanmothortho@gmail.com
+                </Text>
+              </a>
             </li>
             <li>
-              <Text>contact@steritools.com</Text>
+              <a href="mailto:ChrisWylie210@outlook.com">
+                <Text className="hover:underline">
+                  ChrisWylie210@outlook.com
+                </Text>
+              </a>
             </li>
           </ul>
         </div>
