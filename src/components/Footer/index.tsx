@@ -29,21 +29,17 @@ const Footer = () => {
           <ul>
             <li>
               <a href="mailto:mlbierdeman@gmail.com">
-                <Text className="hover:underline">mlbierdeman@gmail.com</Text>
+                <Text className="underline">mlbierdeman@gmail.com</Text>
               </a>
             </li>
             <li>
               <a href="mailto:mkarchmanmothortho@gmail.com">
-                <Text className="hover:underline">
-                  mkarchmanmothortho@gmail.com
-                </Text>
+                <Text className="underline">mkarchmanmothortho@gmail.com</Text>
               </a>
             </li>
             <li>
               <a href="mailto:ChrisWylie210@outlook.com">
-                <Text className="hover:underline">
-                  ChrisWylie210@outlook.com
-                </Text>
+                <Text className="underline">ChrisWylie210@outlook.com</Text>
               </a>
             </li>
           </ul>
