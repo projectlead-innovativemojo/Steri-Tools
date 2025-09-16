@@ -62,7 +62,7 @@ export default function ContactForm() {
             <option>PK</option>
           </select> */}
           <input
-            type="number"
+            type="text"
             id="phone"
             placeholder="+1 (555) 000-0000"
             className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"

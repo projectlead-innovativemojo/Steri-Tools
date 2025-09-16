@@ -29,16 +29,25 @@ export default function GetInTouch() {
           </Text>
 
           {/* Contact info */}
-          <address className="not-italic text-[18px] leading-[24px] md:text-[22px] md:leading-[28px] font-medium text-[#000000]  md:text-left text-center mb-[66px] md:mb-[115px]">
+          <address className="not-italic text-[18px] leading-[24px] md:text-[20px] md:leading-[28px] font-medium text-[#000000]  md:text-left text-center mb-[66px] md:mb-[115px]">
             <div>
-              <a className="block" href="mailto:mlbierdeman@gmail.com">
+              <a
+                className="block hover:underline"
+                href="mailto:mlbierdeman@gmail.com"
+              >
                 mlbierdeman@gmail.com
               </a>
-              <a className="block" href="mailto:mkarchmanmothortho@gmail.com">
+              <a
+                className="block hover:underline"
+                href="mailto:mkarchmanmothortho@gmail.com"
+              >
                 mkarchmanmothortho@gmail.com
               </a>
-              <a className="block" href="mailto:chrisgt2001@hotmail.com">
-                chrisgt2001@hotmail.com
+              <a
+                className="block hover:underline"
+                href="mailto:ChrisWylie210@outlook.com"
+              >
+                ChrisWylie210@outlook.com
               </a>
             </div>
           </address>
