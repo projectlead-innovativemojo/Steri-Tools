@@ -1,28 +1,31 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import React, { useEffect, useState } from "react";
-
+// import { usePathname } from "next/navigation";
+import { FaChevronDown } from "react-icons/fa";
 import { gsap } from "gsap";
-
 import Drawer from "../ui/Drawer";
 import Button from "../ui/Button";
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [teamPartnerToggle, setteamPartnerToggle] = useState(false);
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
-
+  // const currentPath = usePathname();
+  const [visibleDropdown, setVisibleDropdown] = useState<
+    "about" | "work" | "network" | null
+  >(null);
+  const handleteamPartnerToggle = () => {
+    setteamPartnerToggle(!teamPartnerToggle);
+    // (false);
+  };
   useEffect(() => {
     if (isOpen) {
       // Select all list items
       const listItems = document.querySelectorAll(".list-items");
-
       // Set initial opacity to 0 and translateX to 20px
       gsap.set(listItems, { opacity: 0, x: 20 });
-
       // Iterate through list items and animate them
       gsap.to(listItems, {
         delay: 0.5,
@@ -34,7 +37,6 @@ const Navbar = () => {
       });
     }
   }, [isOpen]);
-
   return (
     <>
       <nav className="relative w-full px-5 py-[16px] bg-[#14205A]">
@@ -51,7 +53,6 @@ const Navbar = () => {
                 height={132}
               />
             </Link>
-
             {/* Desktop nav (md and up) */}
             <div className="hidden md:flex gap-[70px]">
               <ul className="font-medium flex items-center gap-[40px]">
@@ -63,13 +64,43 @@ const Navbar = () => {
                     Our Story
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/our-team"
-                    className="block text-[18px] font-normal leading-[26px] text-[#FAF9F6]"
-                  >
-                    Our Team & Partners
-                  </Link>
+                <li
+                  onMouseEnter={() => setVisibleDropdown("work")}
+                  onMouseLeave={() => setVisibleDropdown(null)}
+                >
+                  <div className="text-[18px] text-primary font-walsheimGt font-bold leading-[25.5px]">
+                    <button type="button" className="flex items-center gap-2">
+                      <p className="block text-[18px] font-normal leading-[26px] text-[#FAF9F6]">
+                        Our Team & Partners
+                      </p>
+                    </button>
+                    <span className="underline-effect"></span>
+                    {visibleDropdown === "work" && (
+                      <div className="absolute py-2 mt-[2px] bg-[#14205A] opacity-100 transition-opacity duration-300 min-w-[200px] border-2 border-[#EDD98A] rounded-[6px]">
+                        <div className="py-1 flex flex-col h-full gap-2 justify-center">
+                          <div className="px-4">
+                            <Link
+                              href="/our-team"
+                              className="text-[#fff] text-[16px] leading-3 font-walsheimGt font-medium"
+                            >
+                              Our Team
+                            </Link>
+                            <span className="underline-effect2"></span>
+                          </div>
+                          <hr className="my-1" />
+                          <div className="px-4">
+                            <Link
+                              href="/our-partners"
+                              className="text-[#fff] text-[16px] leading-3 font-walsheimGt font-medium"
+                            >
+                              Our Partners
+                              <span className="underline-effect2"></span>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </li>
                 <li>
                   <Link
@@ -82,11 +113,10 @@ const Navbar = () => {
               </ul>
               <Link href="/investor">
                 <Button className="p-[10px] w-[206px] h-10">
-                  Investor Resources
+                  Investor Resources
                 </Button>
               </Link>
             </div>
-
             {/* Mobile hamburger + drawer (mobile only) */}
             <div className="md:hidden block">
               <div
@@ -128,17 +158,52 @@ const Navbar = () => {
                         </li>
                       </a>
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                      <a
-                        href="/our-team"
-                        className="block  text-[18px] font-medium leading-7 text-[#FFFFFF] uppercase"
-                      >
-                        <li className="flex justify-center py-[20px] list-items">
-                          Our Team & Partners
-                        </li>
-                      </a>
+                      <li className=" group flex justify-center">
+                        <div className="text-[12px] text-primary w-full font-walsheimGt font-medium leading-[25.5px]">
+                          <li
+                            className="text-center py-[15px] flex justify-center items-center gap-2"
+                            onClick={handleteamPartnerToggle}
+                          >
+                            <p
+                              className="block text-[18px] font-medium leading-7 text-[#FFFFFF] uppercase"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Our Team & Partners
+                            </p>
+                            <FaChevronDown
+                              className={`text-white transform transition-transform duration-300 text-[18px] ${
+                                teamPartnerToggle ? "rotate-180" : "rotate-0"
+                              }`}
+                            />
+                          </li>
+                          <div
+                            className={`relative  left-0 w-full transition-all duration-500 ease-in-out overflow-hidden ${
+                              teamPartnerToggle
+                                ? "max-h-[180px] opacity-100"
+                                : "max-h-0 opacity-0"
+                            }`}
+                          >
+                            <div className="pt-1 pb-4 flex items-center flex-col h-full justify-center">
+                              <a
+                                href="/our-team"
+                                className="text-white text-[13px] font-semibold  font-futuraBT"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                Our Team
+                              </a>
+                              <div className="w-full border-t border-white my-2"></div>
+                              <a
+                                href="/our-partners"
+                                className="text-white text-[13px] font-semibold  font-futuraBT"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                Our Partners
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
                       <a
                         href="/contact-us"
                         className="block text-[18px] font-medium leading-7 text-[#FFFFFF]"
@@ -148,13 +213,11 @@ const Navbar = () => {
                         </li>
                       </a>
                       <hr className="h-px my- bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
                       <a href="/investor" className="px-5">
                         <Button className="p-[15px] w-full my-5 mx-auto h-[50px] uppercase">
-                          Investor Resources
+                          Investor Resources
                         </Button>
                       </a>
-
                       <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
                     </ul>
                   </div>
@@ -167,5 +230,4 @@ const Navbar = () => {
     </>
   );
 };
-
 export default Navbar;
