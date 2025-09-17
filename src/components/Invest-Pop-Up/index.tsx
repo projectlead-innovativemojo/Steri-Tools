@@ -99,7 +99,7 @@ export default function InvestPopupForm({ closeModal }: InvestPopupFormProps) {
         {/* How Many Units? */}
         <div className="w-full">
           {/* Dropdown button */}
-          <div className="relative">
+          {/* <div className="relative">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -113,7 +113,6 @@ export default function InvestPopupForm({ closeModal }: InvestPopupFormProps) {
               <Image src={caretDownBtn} alt="icon" width={24} height={24} />
             </button>
 
-            {/* Dropdown menu */}
             {isOpen && (
               <ul className="absolute left-0 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-md z-10 max-h-[900px] overflow-y-auto">
                 <li
@@ -142,7 +141,20 @@ export default function InvestPopupForm({ closeModal }: InvestPopupFormProps) {
                 </li>
               </ul>
             )}
-          </div>
+          </div> */}
+
+          <label
+            htmlFor="company"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Units
+          </label>
+          <input
+            type="text"
+            id="company"
+            placeholder="Interested in how many units?"
+            className="mt-[6px] block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-yellow-400 focus:ring-yellow-400"
+          />
         </div>
 
         {/* Message */}

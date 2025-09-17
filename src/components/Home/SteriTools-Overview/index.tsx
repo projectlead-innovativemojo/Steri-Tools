@@ -1,16 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import SurgicalInstrumentsSlider from "./Slider";
+import InvestPopupForm from "@/components/Invest-Pop-Up";
 
 import ringsOverlay from "@/public/images/home/circle-rings.svg";
 import yellowDoubleRing from "@/public/images/home/yellow-double-ring.svg";
 import yellowBlueRing from "@/public/images/home/blue-yellow-ring.svg";
 
 const SteriToolsOverview = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const closeModal = () => setOpenModal(false);
+
   return (
     <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mb-[90px] md:mb-[55px]">
       <div className="relative flex justify-center md:flex-row flex-col items-center px-5 md: md:py-0 pt-[120px] pb-[80px] gap-0 mt-[91px] md:mt-[79px] mb-[52px] md:mb-[60px] bg-[#14205A] w-full max-w-[1240px] min-h-[554px] rounded-[24px]">
@@ -86,13 +92,23 @@ const SteriToolsOverview = () => {
         </div> */}
 
         <div className="w-[183px] md:w-[290px]  mx-auto">
-          <Link href="/contact-us">
-            <ShimmerButton className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]">
-              Invest in SteriTools
-            </ShimmerButton>
-          </Link>
+          <ShimmerButton
+            onClick={() => setOpenModal(true)}
+            className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]"
+          >
+            Invest in SteriTools
+          </ShimmerButton>
         </div>
       </div>
+
+      {/* Invest Form Popup Modal */}
+      {openModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50">
+          <div className="w-full max-h-[90vh] md:max-h-[100vh] overflow-y-auto hide-scrollbar flex py-5 items-start md:justify-center md:items-center">
+            <InvestPopupForm closeModal={closeModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
