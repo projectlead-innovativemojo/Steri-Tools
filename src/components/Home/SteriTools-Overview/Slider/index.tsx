@@ -57,7 +57,7 @@ const SurgicalInstrumentsSlider = () => {
                   <p className="text-center text-xs mt-2 max-w-[184px] mx-auto">
                     Before:
                     <br />
-                    Instruments soaked in water
+                    Instrument soaked in water
                   </p>
                 </div>
                 <div className="flex flex-col items-center">
