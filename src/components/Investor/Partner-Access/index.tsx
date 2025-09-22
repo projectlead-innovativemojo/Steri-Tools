@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import Button from "@/ui/Button";
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
@@ -46,9 +46,11 @@ const PartnerAccess = () => {
         Access the Folder
       </Button> */}
 
-      <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mt-[90px]">
-        Access the Folder
-      </ShimmerButton>
+      <Link href="https://drive.google.com/drive/folders/1GB9MXPVjHbkGphCbzF89FKKTFdiZ4LqM">
+        <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mt-[90px]">
+          Access the Folder
+        </ShimmerButton>
+      </Link>
       <div className="flex items-center justify-between max-w-[751px] w-full mx-auto mt-[28px] md:mt-[0]">
         <Image
           src={yellowRing}
