@@ -55,7 +55,7 @@ const MissionVision = () => {
         </div>
 
         {/* Right: cards */}
-        <div className="flex-1 z-10 w-full max-w-[502px] text-white space-y-[50px] md:space-y-[95px]">
+        <div className="flex-1 z-10 w-full max-w-[502px] text-white space-y-[50px] md:space-y-[75px]">
           {/* Mission */}
           <div className="px-[30px] py-[15px] bg-[#14205A]">
             <Text className="font-montserrat text-[#fff] text-center font-bold text-[28px] md:text-[28px] leading-[34px] md:leading-[34px] tracking-[-0.25%] mb-[30px]">
@@ -72,16 +72,10 @@ const MissionVision = () => {
 
           {/* Vision */}
           <div className="px-[30px] py-[15px] bg-[#14205A]">
-            <Text className="font-montserrat text-[#fff] text-center font-bold text-[28px] md:text-[28px] leading-[34px] md:leading-[34px] tracking-[-0.25%] mb-[30px]">
+            {/* <Text className="font-montserrat text-[#fff] text-center font-bold text-[28px] md:text-[28px] leading-[34px] md:leading-[34px] tracking-[-0.25%] mb-[30px]">
               Vision Statement
-            </Text>
+            </Text> */}
             <Text className="text-[18px] leading-[26px] text-center md:text-left">
-              Mitigate the problems associated with Surgical Site Infections
-              across the globe. Using innovation to force multiply simple,
-              inexpensive intraoperative disinfection devices in order to save
-              lives, improve outcomes and save health care dollars.
-              <br />
-              <br />
               In collaboration with: EEE Corp Group, TestLabs, Northsky Design
               Limited, Henry Jackson Foundation for the Advancement of Military
               Medicine.
