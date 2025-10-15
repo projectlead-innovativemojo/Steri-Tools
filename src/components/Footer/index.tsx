@@ -28,18 +28,18 @@ const Footer = () => {
           </Text>
           <ul>
             <li>
-              <a href="mailto:mlbierdeman@gmail.com">
-                <Text className="underline">mlbierdeman@gmail.com</Text>
+              <a href="mailto:Chris@SteriToolsGlobal.com">
+                <Text className="underline">Chris@SteriToolsGlobal.com</Text>
               </a>
             </li>
             <li>
-              <a href="mailto:mkarchmanmothortho@gmail.com">
-                <Text className="underline">mkarchmanmothortho@gmail.com</Text>
+              <a href="mailto:Leigh@SteriToolsGlobal.com">
+                <Text className="underline">Leigh@SteriToolsGlobal.com</Text>
               </a>
             </li>
             <li>
-              <a href="mailto:ChrisWylie210@outlook.com">
-                <Text className="underline">ChrisWylie210@outlook.com</Text>
+              <a href="mailto:Mike@SteriToolsGlobal.com">
+                <Text className="underline">Mike@SteriToolsGlobal.com</Text>
               </a>
             </li>
           </ul>

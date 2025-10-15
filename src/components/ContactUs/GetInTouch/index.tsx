@@ -33,21 +33,21 @@ export default function GetInTouch() {
             <div>
               <a
                 className="block underline"
-                href="mailto:mlbierdeman@gmail.com"
+                href="mailto:Chris@SteriToolsGlobal.com"
               >
-                mlbierdeman@gmail.com
+                Chris@SteriToolsGlobal.com
               </a>
               <a
                 className="block underline"
-                href="mailto:mkarchmanmothortho@gmail.com"
+                href="mailto:Leigh@SteriToolsGlobal.com"
               >
-                mkarchmanmothortho@gmail.com
+                Leigh@SteriToolsGlobal.com
               </a>
               <a
                 className="block underline"
-                href="mailto:ChrisWylie210@outlook.com"
+                href="mailto:Mike@SteriToolsGlobal.com"
               >
-                ChrisWylie210@outlook.com
+                Mike@SteriToolsGlobal.com
               </a>
             </div>
           </address>
