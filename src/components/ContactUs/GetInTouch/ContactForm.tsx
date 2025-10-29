@@ -8,6 +8,7 @@ export default function ContactForm() {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [policyAccepted, setPolicyAccepted] = useState(false);
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -143,6 +144,8 @@ export default function ContactForm() {
         <input
           type="checkbox"
           id="policy"
+          checked={policyAccepted}
+          onChange={(e) => setPolicyAccepted(e.target.checked)}
           className="h-4 w-4 rounded-md md:border-[#D5D7DA] text-yellow-500 focus:ring-yellow-400"
         />
         <label
@@ -158,7 +161,12 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-md bg-[#EDD98A] mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#E3CD73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        disabled={!policyAccepted || loading}
+        className={`w-full rounded-md mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 ${
+          policyAccepted && !loading
+            ? "bg-[#EDD98A] text-[#14205A] hover:bg-[#E3CD73]"
+            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+        }`}
       >
         {loading ? "Sending..." : "Send Message"}
       </button>

@@ -1,25 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
 import Image from "next/image";
 
 import closeBtn from "@/public/images/story/close-x-icon.svg";
-import caretDownBtn from "@/public/images/story/CaretDown.svg";
 
 type InvestPopupFormProps = {
   closeModal: () => void;
 };
 
 export default function InvestPopupForm({ closeModal }: InvestPopupFormProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [unitSelected, setUnitSelected] = useState<number | null>(null);
-
-  const handleSelect = (value: number) => {
-    setUnitSelected(value);
-    setIsOpen(false);
-  };
-
   return (
     <div className="relative rounded-3xl bg-white shadow-[0px_3px_8px_0px_#0000003D] w-full max-w-[604px] hide-scrollbar py-[66px] md:py-[37px] px-[19px] max-h-[95vh] overflow-y-auto ">
       {/* Close button */}
