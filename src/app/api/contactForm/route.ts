@@ -17,7 +17,14 @@ export async function POST(request: NextRequest) {
 
     const mailoptionsToAdmin = {
       from: email,
-      to: ["chrissteritools@gmail.com", "developer@innovativemojo.com"],
+      to: [
+        "chrissteritools@gmail.com",
+        "developer@innovativemojo.com",
+        "Chris@SteriToolsGlobal.com",
+        "Leigh@SteriToolsGlobal.com",
+        "Mike@SteriToolsGlobal.com",
+      ],
+
       subject: "Contact Form Response",
       text: `Following is the new message:
       Name: ${name}
