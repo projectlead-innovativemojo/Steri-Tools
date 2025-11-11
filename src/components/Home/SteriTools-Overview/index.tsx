@@ -45,8 +45,8 @@ const SteriToolsOverview = () => {
           <span className="text-[#EDD98A]"> SteriBasin Go: </span> A simple
           solution that solves a complex problem. <br />
           If {`you're`} a surgeon, veteran, OR staff, or forward surgical team,
-          how have you deal with this problem—and would a device like SteriTools
-          change your workflow?
+          how have you dealt with this problem—and would a device like
+          SteriTools change your workflow?
           <br /> <br />
           Welcome to the SteriTools conversation.
         </Text>

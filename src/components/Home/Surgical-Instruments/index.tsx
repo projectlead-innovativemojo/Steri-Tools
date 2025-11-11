@@ -110,6 +110,9 @@ const SurgicalInstruments = () => {
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
+            Simulated Animation
+          </Text>
         </div>
         <Text className="w-full max-w-[608px] mt-[31px] md:mt-0">
           SteriBasin Go is a compact, table-based disinfection device delivering{" "}
