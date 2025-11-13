@@ -102,10 +102,10 @@ const SurgicalInstruments = () => {
           />
           <video
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10 object-cover"
-            // controls
             autoPlay
             muted
             loop
+            playsInline // ✅ this is key for mobile autoplay
           >
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
