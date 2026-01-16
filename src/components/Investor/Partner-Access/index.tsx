@@ -32,16 +32,14 @@ const PartnerAccess = () => {
       <Text className="font-montserrat text-[#EDD98A] md:text-[22px] md:leading-[28px] font-medium text-center mb-[74px] md:mb-[60px]">
         Click the button below to access the protected Google Drive folder
       </Text>
-      <div className="relative flex justify-center items-center w-full max-w-[382px] mx-auto">
-        {/* Blue Ring  */}
+      {/* <div className="relative flex justify-center items-center w-full max-w-[382px] mx-auto ">
         <Image
           src={blueRing}
           alt="Blue Ring"
           className="absolute w-[600px] h-[600px] z-0"
         />
-        {/* Device Image */}
         <Image src={deviceImg} alt="Device" className="relative z-10 w-full" />
-      </div>
+      </div> */}
       {/* <Button className="text-white bg-[#076F26] max-w-[260px] h-[60px] border-2 border-[#EDD98A] mt-[90px] mx-auto cursor-pointer">
         Access the Folder
       </Button> */}

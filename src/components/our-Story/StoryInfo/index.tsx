@@ -20,12 +20,12 @@ const StoryInfo = () => {
   return (
     <div className="w-full max-w-[1237px] px-5 mx-auto ">
       <div className="w-full flex flex-col md:flex-row md:items-center items-start gap-[37px] md:gap-[30px] md:mb-[104px] mb-[47px]">
-        <div className="relative w-full max-w-[502px]">
+        <div className="relative w-full max-w-[502px] md:mt-10">
           <Image src={info1} alt="info1" className="w-full" />
           <Image
             src={shapes}
             alt="shapes"
-            className="absolute -z-1 top-[-60px] md:top-[-80px] left-0 md:w-[135px] md:h-[135px] w-[102px]"
+            className="absolute -z-1 top-[-60px] md:top-[-60px] left-0 md:w-[135px] md:h-[135px] w-[102px]"
           />
         </div>
 
@@ -64,7 +64,13 @@ const StoryInfo = () => {
 
       <div className="w-full flex flex-col md:flex-row-reverse md:items-center items-start gap-[132px] md:gap-[30px] md:mb-[175px] mb-[70px]">
         <div className="relative w-full max-w-[502px]">
-          <Image src={info2} alt="info2" className="w-full" />
+          <Image src={info2} alt="info2" className="w-full relative md:rounded-none rounded-b-[12px]" />
+          <div className="bg-[#101F5D] absolute bottom-0 md:bottom-[-25px] text-[14px] md:-right-[40px] text-white w-full max-w-[490px] px-5 py-2 rounded-[12px]">
+          <Text className="text-[14px] md:text-[14px] font-bold text-white ">
+          About 12% of surgical instruments on the back <br />
+          table are contaminated with bacteria known to cause infections
+          </Text>
+          </div>
           <Image
             src={yellowshapes}
             alt="shapes"

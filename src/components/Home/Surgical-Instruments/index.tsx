@@ -4,12 +4,13 @@ import Image from "next/image";
 import Text from "@/ui/Text";
 
 import surgicalinstruments from "@/public/images/home/instruments.png";
-import dotbg from "@/public/images/home/Dot Grid.svg";
+import dotbg from "@/public/images/home/Dot Grid.png";
 import surgical2 from "@/public/images/home/surgical2.png";
 import germsBg from "@/public/images/home/germs-bg.svg";
 import yellowDotSquare from "@/public/images/home/yellow-dot-square.svg";
 import blueDotSquare from "@/public/images/home/blue-dot-square.svg";
 import blueDotGrid from "@/public/images/home/blue-dots-grid.svg";
+import data from "@/public/images/home/Data 1.png";
 
 const SurgicalInstruments = () => {
   return (
@@ -47,12 +48,12 @@ const SurgicalInstruments = () => {
 
       {/* 2 */}
 
-      <div className="flex relative items-center gap-[15px] md:gap-[10px] md:flex-now-wrap flex-col md:flex-row">
+      <div className="flex relative items-center gap-[15px] md:gap-[25px] md:flex-now-wrap flex-col md:flex-row">
         <div className="relative h-full  flex justify-center items-center">
           <Image
             src={dotbg}
             alt="dotbg"
-            className="absolute w-full h-full hidden md:block"
+            className="w-full max-w-[608px] h-[450px] object-cover hidden md:block"
           />
           <Image
             src={yellowDotSquare}
@@ -62,10 +63,10 @@ const SurgicalInstruments = () => {
           <Image
             src={surgical2}
             alt=""
-            className="w-full max-w-[608px] relative z-10"
+            className="w-full relative -bottom-[20px] md:absolute max-w-[468px] right-0 h-[350px] z-10 md:bottom-[4px]"
           />
         </div>
-        <Text className="w-full max-w-[615px] ]">
+        <Text className="w-full max-w-[615px] md:mt-0 mt-4">
           Every surgeon knows the pattern: blood-stained instruments set on the
           back table, dropped into splash basins, reused mid-case without
           real-time disinfection.
@@ -95,12 +96,12 @@ const SurgicalInstruments = () => {
             alt="blue"
             className="absolute bottom-[11px] right-0"
           />
-          <Image
-            src={blueDotGrid}
-            alt="dotbg"
-            className="absolute inset-0 w-full h-full -z-10 hidden md:block"
-          />
-          <video
+            <Image
+              src={blueDotGrid}
+              alt="dotbg"
+              className="absolute inset-0 w-full h-full -z-10 hidden md:block"
+            />
+          {/* <video
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10 object-cover"
             autoPlay
             muted
@@ -109,10 +110,18 @@ const SurgicalInstruments = () => {
           >
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-          </video>
-          <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
+          </video> */}
+
+<Image
+            src={data}
+            alt="dotbg"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10"
+          />
+
+
+          {/* <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
             Simulated Animation
-          </Text>
+          </Text> */}
         </div>
         <Text className="w-full max-w-[608px] mt-[31px] md:mt-0">
           SteriBasin Go is a compact, table-based disinfection device delivering{" "}
