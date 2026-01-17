@@ -101,7 +101,7 @@ const SurgicalInstruments = () => {
               alt="dotbg"
               className="absolute inset-0 w-full h-full -z-10 hidden md:block"
             />
-          {/* <video
+          <video
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10 object-cover"
             autoPlay
             muted
@@ -110,18 +110,18 @@ const SurgicalInstruments = () => {
           >
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-          </video> */}
+          </video>
 
-<Image
+{/* <Image
             src={data}
             alt="dotbg"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10"
-          />
+          /> */}
 
 
-          {/* <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
+          <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
             Simulated Animation
-          </Text> */}
+          </Text>
         </div>
         <Text className="w-full max-w-[608px] mt-[31px] md:mt-0">
           SteriBasin Go is a compact, table-based disinfection device delivering{" "}
