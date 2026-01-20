@@ -77,7 +77,7 @@ const MissionVision = () => {
             </Text> */}
             <Text className="text-[18px] leading-[26px] text-center md:text-left">
               In collaboration with: EEE Corp Group, TestLabs, Northsky Design
-              Limited
+              Limited.
             </Text>
           </div>
         </div>

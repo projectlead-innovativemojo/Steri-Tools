@@ -42,10 +42,10 @@ const MeetPatrtners = () => {
               alt="hjf"
               className="max-w-[81px] md:max-w-[123px]"
             /> */}
-            {/* <Text className="max-w-[213px] md:max-w-full text-[18px] md:text-[22px] md:leading-[28px] font-semibold font-montserrat text-white md:text-left text-center">
+            <Text className="max-w-[213px] md:max-w-full md:pl-7 text-[18px] md:text-[22px] md:leading-[28px] font-semibold font-montserrat text-white md:text-left text-center">
               Strategic Ecosystem <br className="md:block hidden" />
-              EEE Corporation & HJF
-            </Text> */}
+              EEE Corporation
+            </Text>
           </div>
           <Button
             onclick={() => setShowContent(!showContent)}
