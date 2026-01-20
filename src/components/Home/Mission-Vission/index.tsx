@@ -77,8 +77,7 @@ const MissionVision = () => {
             </Text> */}
             <Text className="text-[18px] leading-[26px] text-center md:text-left">
               In collaboration with: EEE Corp Group, TestLabs, Northsky Design
-              Limited, Henry Jackson Foundation for the Advancement of Military
-              Medicine.
+              Limited
             </Text>
           </div>
         </div>

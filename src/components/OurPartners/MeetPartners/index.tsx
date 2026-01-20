@@ -37,15 +37,15 @@ const MeetPatrtners = () => {
               alt="eee"
               className="max-w-[100px] md:max-w-[202px]"
             />
-            <Image
+            {/* <Image
               src={hjf}
               alt="hjf"
               className="max-w-[81px] md:max-w-[123px]"
-            />
-            <Text className="max-w-[213px] md:max-w-full text-[18px] md:text-[22px] md:leading-[28px] font-semibold font-montserrat text-white md:text-left text-center">
+            /> */}
+            {/* <Text className="max-w-[213px] md:max-w-full text-[18px] md:text-[22px] md:leading-[28px] font-semibold font-montserrat text-white md:text-left text-center">
               Strategic Ecosystem <br className="md:block hidden" />
               EEE Corporation & HJF
-            </Text>
+            </Text> */}
           </div>
           <Button
             onclick={() => setShowContent(!showContent)}
@@ -66,15 +66,7 @@ const MeetPatrtners = () => {
               long-standing history of successfully launching medical devices.
               Its D.C. office, located adjacent to the NIH campus, serves as a
               strategic bridge between civilian innovation and the U.S.
-              Department of Defense (DoD) through its relationship with the
-              Henry M. Jackson Foundation for the Advancement of Military
-              Medicine (HJF), a 501(c)(3) nonprofit conducting high-impact R&D
-              for U.S. armed forces and NATO. <br />
-              Dr. Negin Bemanzadeh, MD, MBA, CEO of EEE Corporation and Advisory
-              Board Member at HJF, is the key decision-maker for accepting
-              medical device projects into HJF’s portfolio, ensuring
-              SteriBasinGO is positioned for both military deployment and
-              high-impact civilian adoption.
+              Department of Defense (DoD).
             </Text>
           </>
         )}
