@@ -50,7 +50,7 @@ const SurgicalInstruments = () => {
               as="h2"
               className="md:mb-[64px] pt-[115px] md:pt-[98px] text-[28px] leading-[34px] md:text-[28px] md:leading-[34px]"
             >
-              Surgical instruments “become contaminated”, SteriBasin Go{" "}
+              Surgical instruments become contaminated, SteriBasin Go{" "}
               <span className="text-brand-yellow">
                 {" "}
                 cleans and disinfects surgical instruments{" "}
