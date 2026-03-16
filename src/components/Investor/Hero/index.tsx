@@ -16,7 +16,7 @@ const InvestorHero = () => {
       <div className="relative flex justify-center pb-[199px] md:pb-[0] items-end md:items-center h-full min-h-[538px] md:min-h-[545px] w-full text-center px-6">
         <Text as="h1" className="text-[#fff]">
           Exclusive
-          <span className="text-[#EDD98A]"> Investor Access </span>
+          <span className="text-brand-yellow"> Investor Access </span>
         </Text>
       </div>
     </div>

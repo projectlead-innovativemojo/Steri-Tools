@@ -1,21 +1,42 @@
 import React from "react";
+import Image from "next/image";
 
 import Text from "@/ui/Text";
 
+import circleFlagsUk from "@/public/images/footer/circle-flags_uk.svg";
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#14205A] text-white pt-[94px] md:pt-[103px] pb-[115px] md:pb-[135px] px-5">
+    <footer className="w-full bg-[#14205A] text-white pt-[94px] md:pt-[103px] pb-[92px] md:pb-[135px] px-5">
       <div className="max-w-[1237px] mx-auto flex flex-col md:flex-row justify-between md:px-5 text-center md:text-left gap-[45px] md:gap-[0]">
         {/* About */}
         <div className="flex-1 max-w-[373px] md:max-w-[397px] w-full md:mr-[105px] mx-auto ">
           <Text className="font-montserrat text-[22px] md:text-[28px] leading-[28px] md:leading-[34px] tracking-[-0.25%] font-medium mb-[20px]">
             About
           </Text>
-          <Text>
+          <Text className="mb-[32px]">
             SteriBasin Go, an innovative solution engineered to enhance surgical
             protocols by removing bioburden, including bacteria, from surgical
             instruments in real time during procedures.
           </Text>
+
+          {/* Badge: Designed in the UK */}
+          <div
+            className="md:inline-flex hidden max-w-[225px] w-full px-[10px] h-[46px] items-center gap-[15px] justify-center rounded-[12px] font-bold text-[18px] leading-[26px] tracking-[0%] text-[#14205A]"
+            style={{
+              background: "linear-gradient(90deg, #E1B43E 0%, #EDD98A 100%)",
+              boxShadow: "0px 20px 30px -10px #26394D",
+            }}
+          >
+            <Image
+              src={circleFlagsUk}
+              alt=""
+              width={24}
+              height={24}
+              className="w-[24px] h-[24px] shrink-0 rounded-full object-cover"
+            />
+            Designed in the UK
+          </div>
         </div>
 
         {/* Contact */}
@@ -28,25 +49,16 @@ const Footer = () => {
           </Text>
           <ul>
             <li>
-              <a href="mailto:Chris@SteriToolsGlobal.com">
-                <Text className="underline">Chris@SteriToolsGlobal.com</Text>
+              <a href="mailto:Info@SteriToolsGlobal.com">
+                <Text className="underline">Info@SteriToolsGlobal.com</Text>
               </a>
             </li>
-            <li>
-              <a href="mailto:Leigh@SteriToolsGlobal.com">
-                <Text className="underline">Leigh@SteriToolsGlobal.com</Text>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:Mike@SteriToolsGlobal.com">
-                <Text className="underline">Mike@SteriToolsGlobal.com</Text>
-              </a>
-            </li>
+
           </ul>
         </div>
 
         {/* Newsletter */}
-        <div className="flex-1  max-w-[420px] w-full">
+        <div className="flex-1 mx-auto max-w-[420px] w-full">
           <Text className="font-montserrat text-[22px] md:text-[28px] leading-[28px] md:leading-[34px] tracking-[-0.25%] font-medium mb-[20px]">
             Newsletter
           </Text>
@@ -61,11 +73,29 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="w-full max-w-full md:max-w-[126px] px-[18px] py-[10px] bg-none text-white border-1 border-[#EDD98A] font-bold rounded-[8px] hover:bg-[#EDD98A] transition"
+              className="w-full max-w-full md:max-w-[126px] px-[18px] py-[10px] bg-none text-white border-1 border-brand-yellow font-bold rounded-[8px] hover:bg-brand-yellow transition"
             >
               Subscribe
             </button>
           </form>
+
+          {/* Badge: Designed in the UK */}
+          <div
+            className="md:hidden inline-flex mt-[53px] max-w-[225px] w-full px-[10px] h-[46px] items-center gap-[15px] justify-center rounded-[12px] font-bold text-[18px] leading-[26px] tracking-[0%] text-[#14205A]"
+            style={{
+              background: "linear-gradient(90deg, #E1B43E 0%, #EDD98A 100%)",
+              boxShadow: "0px 20px 30px -10px #26394D",
+            }}
+          >
+            <Image
+              src={circleFlagsUk}
+              alt=""
+              width={24}
+              height={24}
+              className="w-[24px] h-[24px] shrink-0 rounded-full object-cover"
+            />
+            Designed in the UK
+          </div>
         </div>
       </div>
     </footer>

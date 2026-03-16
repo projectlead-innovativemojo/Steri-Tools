@@ -15,7 +15,7 @@ const PartnerHero = () => {
       <div className="relative flex justify-center pb-[199px] md:pb-[0] items-end md:items-center h-full min-h-[538px] md:min-h-[545px] w-full text-center px-6">
         <Text as="h1" className="text-[#fff]">
           Our
-          <span className="text-[#EDD98A]"> Partners </span>
+          <span className="text-brand-yellow"> Partners </span>
         </Text>
       </div>
     </div>

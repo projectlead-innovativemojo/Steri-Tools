@@ -5,7 +5,7 @@ import Text from "@/ui/Text";
 import bg from "@/public/images/home/herobg.png";
 const HomeHero = () => {
   return (
-    <div className="w-full max-w-[1237px] mx-auto relative mt-[41px] md:mt-[57px] mb-[27px] md:mb-[50px] px-5">
+    <div className="w-full max-w-[1237px] mx-auto relative mt-[41px] md:mt-[57px]  px-5">
       <Image
         src={bg}
         alt="image"
@@ -15,7 +15,7 @@ const HomeHero = () => {
       <div className="relative pb-[23px] flex justify-center items-end md:items-center h-full min-h-[506px] md:min-h-[655px] w-full max-w-[805px]">
         <Text as="h1" className="text-[#fff] md:text-left text-center">
           Designed to{" "}
-          <span className="text-[#EDD98A]">
+          <span className="text-brand-yellow">
             {" "}
             Reduce Bioburden, Microbial Load and Surgical Site Infections{" "}
           </span>{" "}

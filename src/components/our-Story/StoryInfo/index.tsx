@@ -84,19 +84,19 @@ const StoryInfo = () => {
             surgical instruments on the back table are contaminated with
             bacteria known to cause infections. Driven by this discovery and the
             urgent need for a solution, we developed{" "}
-            <span className="font-bold text-[#EDD98A]"> SteriTools</span> —a
+            <span className="font-bold text-brand-yellow"> SteriTools</span> —a
             revolutionary technology designed to offer real-time cleaning and
             disinfection of surgical instruments, dramatically reducing the risk
             of infection.
             <br /> <br />
             Our mission at{" "}
-            <span className="font-bold text-[#EDD98A]"> SteriTools </span> is to
+            <span className="font-bold text-brand-yellow"> SteriTools </span> is to
             tackle this global challenge, which incurs billions in healthcare
             costs annually due to increased morbidity, lost productivity,
             heightened litigation, significant stress on patients and healthcare
             teams, and profound impacts on mortality rates.
             <br /> <br />
-            At <span className="font-bold text-[#EDD98A]"> SteriTools,</span> we
+            At <span className="font-bold text-brand-yellow"> SteriTools,</span> we
             are dedicated to improving surgical safety and efficiency worldwide.
             Our innovative approach not only enhances the quality of care but
             also aligns with eco-friendly practices, as our devices utilize
@@ -107,7 +107,7 @@ const StoryInfo = () => {
 
       <Text className="font-montserrat md:tracking-[-0.2%] mx-auto w-full md:max-w-[1030px] text-center text-[18px] md:text-[22px] md:leading-[28px] mb-[72px] md:mb-[64px]">
         We invite you to explore our site and learn more about how{" "}
-        <span className="text-[#EDD98A] font-bold">SteriTools </span> is setting
+        <span className="text-brand-yellow font-bold">SteriTools </span> is setting
         new standards in surgical practices and offering hope and safety to
         patients worldwide. Join us in our mission to transform healthcare—one
         surgery at a time

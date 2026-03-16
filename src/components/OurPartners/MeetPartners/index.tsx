@@ -16,7 +16,7 @@ const MeetPatrtners = () => {
   return (
     <div className="w-full max-w-[1237px] mx-auto px-5">
       <Text as="h2" className="mb-[57px] md:mb-[85px] text-center">
-        Meet Our <span className="text-[#EDD98A]"> Partners </span>
+        Meet Our <span className="text-brand-yellow"> Partners </span>
       </Text>
       <div className="relative w-full bg-[#14205A] rounded-[24px] mb-[57px] md:mb-[103px] px-4">
         {/* Yellow Rings BG */}
@@ -56,7 +56,7 @@ const MeetPatrtners = () => {
         </div>
         {showContent && (
           <>
-            <hr className="border-[0.5px] border-[#EDD98A] mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
+            <hr className="border-[0.5px] border-brand-yellow mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
             <Text className="pb-[51px] text-[#FFFFFF] w-full max-w-[264px] md:max-w-[987px] mx-auto ">
               SteriTools operates within the advisory and incubation platform of
               EEE Corporation, a McKinsey-like corporate advisory and private

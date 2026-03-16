@@ -85,7 +85,7 @@ const AdvisorySlider = () => {
     <div className="relative w-full max-w-[1237px] mx-auto px-5 md:px-0 mb-[115px] ">
       {/* Title */}
       <Text as="h2" className="text-center mb-[85px]">
-        Advisory <span className="text-[#EDD98A]">Team</span>
+        Advisory <span className="text-brand-yellow">Team</span>
       </Text>
 
       {/* Swiper Container */}
@@ -185,7 +185,7 @@ const AdvisorySlider = () => {
                     <button
                       onClick={() => toggleExpand(index)}
                       className={cn(
-                        "mt-3 text-[#EDD98A] font-semibold underline hidden",
+                        "mt-3 text-brand-yellow font-semibold underline hidden",
                         member.fullBio.length > 290 && "block"
                       )}
                     >

@@ -40,6 +40,7 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand-yellow: var(--brand-yellow);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -75,6 +76,16 @@ body {
   animation: border-move 6s linear infinite;
 }
 
+.shimmer-border-gradient {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--brand-yellow) 20%, transparent),
+    var(--brand-yellow),
+    color-mix(in srgb, var(--brand-yellow) 20%, transparent)
+  );
+  background-size: 200% 100%;
+}
+
 @keyframes border-move {
   0% {
     background-position: 0% 50%;
@@ -103,6 +114,7 @@ body {
 }
 
 :root {
+  --brand-yellow: #E1B43E;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -196,4 +208,26 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Overview mobile slider pagination: hollow dots with border, active filled */
+.overview-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.overview-swiper .swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: 2px solid #e1b43e;
+  opacity: 1;
+  margin: 0;
+}
+.overview-swiper .swiper-pagination-bullet-active {
+  background: #e1b43e;
+  border-color: #e1b43e;
 }

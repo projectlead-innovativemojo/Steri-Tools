@@ -165,7 +165,7 @@ export default function InvestPopupForm({ closeModal }: InvestPopupFormProps) {
         {/* Button */}
         <button
           type="submit"
-          className="w-full rounded-md bg-[#EDD98A] mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#e3cd73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          className="w-full rounded-md bg-brand-yellow mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold text-[#14205A] shadow-sm hover:bg-[#e3cd73] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
           Send message
         </button>

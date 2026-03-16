@@ -18,7 +18,7 @@ const Validation = () => {
   return (
     <div className="w-full max-w-[1237px] mx-auto px-5">
       <Text as="h2" className="mb-[57px] md:mb-[85px] text-center">
-        Validation & <span className="text-[#EDD98A]"> Design Partners </span>
+        Validation & <span className="text-brand-yellow"> Design Partners </span>
       </Text>
 
       {/* test labs */}
@@ -57,7 +57,7 @@ const Validation = () => {
         </div>
         {showContent && (
           <>
-            <hr className="border-[0.5px] border-[#EDD98A] mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
+            <hr className="border-[0.5px] border-brand-yellow mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
             <Text className="pb-[51px] text-[#FFFFFF] w-full max-w-[264px] md:max-w-[987px] mx-auto ">
               TestLabs UK is a GLP-certified, ISO 17025-accredited medical
               device laboratory that specializes in delivering complete
@@ -151,7 +151,7 @@ const Validation = () => {
 
         {showNorthsky && (
           <>
-            <hr className="border-[0.5px] border-[#EDD98A] mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
+            <hr className="border-[0.5px] border-brand-yellow mb-[33px] w-full max-w-[987px] mx-auto hidden md:block" />
             <Text className="pb-[51px] text-[#FFFFFF] w-full max-w-[264px] md:max-w-[987px] mx-auto ">
               NorthSky Design Limited, based in Sheffield, UK, is a
               healthcare-focused product design and engineering firm with deep

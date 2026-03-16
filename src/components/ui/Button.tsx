@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={loading}
       onClick={onclick}
       className={cn(
-        "flex justify-center cursor-pointer items-center text-[#14205A] bg-[#EDD98A] rounded-[8px] text-[18px] font-dmSans font-bold leading-[19.36px] h-[49px]",
+        "flex justify-center cursor-pointer items-center text-[#14205A] bg-brand-yellow rounded-[8px] text-[18px] font-dmSans font-bold leading-[19.36px] h-[49px]",
         className
       )}
     >
@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <div className="inline-block p-[2px] rounded-[10px] bg-[linear-gradient(90deg,#EDD98A33,#EDD98A,#EDD98A33)] bg-[length:200%_100%] animate-border-move">
+    <div className="inline-block p-[2px] rounded-[10px] shimmer-border-gradient animate-border-move">
       {innerButton}
     </div>
   );
