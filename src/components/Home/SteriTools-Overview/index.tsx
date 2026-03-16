@@ -2,106 +2,166 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 import Text from "@/ui/Text";
-import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import SurgicalInstrumentsSlider from "./Slider";
 import InvestPopupForm from "@/components/Invest-Pop-Up";
 
-import ringsOverlay from "@/public/images/home/circle-rings.svg";
-import yellowDoubleRing from "@/public/images/home/yellow-double-ring.svg";
-import yellowBlueRing from "@/public/images/home/blue-yellow-ring.svg";
+import bacteriaImg from "@/public/images/overview/bacteria.svg";
+import surgicalImg from "@/public/images/overview/material-symbols_surgical.svg";
+import avgTimeImg from "@/public/images/overview/material-symbols_avg-time-rounded.svg";
+import batteryImg from "@/public/images/overview/entypo_battery.svg";
+import personMilitaryImg from "@/public/images/overview/fa6-solid_person-military-to-person.svg";
+
+const SEPARATOR_COLOR = "#E1B43E";
+
+const OVERVIEW_SLIDES = [
+  {
+    icon: bacteriaImg,
+    text: "Removes bioburden and bacteria from surgical instruments in real time during procedures",
+  },
+  {
+    icon: surgicalImg,
+    text: "Surgical instruments are maintained in prime condition on the sterile field.",
+  },
+  {
+    icon: avgTimeImg,
+    text: "Reduces the workload in sterile processing after surgery which improves tray turnover and saves valuable time.",
+  },
+  {
+    icon: batteryImg,
+    text: "Lightweight, portable and battery powered",
+  },
+  {
+    icon: personMilitaryImg,
+    text: "Designed for military and civilian use",
+  },
+];
 
 const SteriToolsOverview = () => {
   const [openModal, setOpenModal] = useState(false);
-
   const closeModal = () => setOpenModal(false);
 
   return (
-    <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mb-[90px] md:mb-[55px]">
-      <div className="relative flex justify-center md:flex-row flex-col items-center px-5 md: md:py-0 pt-[120px] pb-[80px] gap-0 mt-[91px] md:mt-[79px] mb-[52px] md:mb-[60px] bg-[#14205A] w-full max-w-[1240px] min-h-[554px] rounded-[24px]">
-        {/* Desktop Screen Cirular Rings */}
-        <Image
-          src={ringsOverlay}
-          alt="Rings Background"
-          className="absolute object-cover pointer-events-none left-[80px] top-[27px] hidden lg:block"
-        />
+    <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mt-[46px] mb-[74px] md:mt-[64px]  md:mb-[80px]">
 
-        {/* Mobile Screen Yellow Cirular Ring */}
-        <Image
-          src={yellowDoubleRing}
-          alt="Ring Bg"
-          className="z-0 absolute object-cover pointer-events-none max-w-[60px] left-[32px] top-[23px] block lg:hidden"
-        />
+      {/* Desktop - 5-feature layout */}
+      <div className="w-full max-w-[1240px] mx-auto bg-white rounded-[24px] md:block hidden overflow-hidden">
+        {/* Row 1 */}
+        <div className="flex flex-col md:flex-row justify-center items-stretch w-full min-w-0">
+          <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
+            <div className="flex flex-col items-center gap-[15px] w-full min-w-0 max-w-[397px] pb-6 pt-3 px-2">
+              <Image src={bacteriaImg} alt="" width={60} height={47} className="w-16 h-[47px] object-contain shrink-0" />
+              <Text className="text-[#4A5568] md:text-[14px] md:leading-[20px] font-medium text-center min-w-0">
+                Removes bioburden and bacteria from surgical instruments in real time during procedures
+              </Text>
+            </div>
+          </div>
+          {/*  line separator */}
+          <div className="hidden md:flex flex-shrink-0 items-stretch px-[12.5px] py-6 md:py-0">
+            <div className="w-px self-stretch shrink-0" style={{ backgroundColor: SEPARATOR_COLOR }} />
+          </div>
+          <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
+            <div className="flex flex-col items-center gap-[15px] w-full min-w-0 max-w-[397px] pb-6 pt-3 px-2">
+              <Image src={surgicalImg} alt="" width={32} height={32} className="w-8 h-8 mt-4 object-contain shrink-0" />
+              <Text className="text-[#4A5568] md:text-[14px] md:leading-[20px] font-medium text-center min-w-0">
+                Surgical instruments are maintained in prime condition on the sterile field.
+              </Text>
+            </div>
+          </div>
+          {/*  line separator */}
+          <div className="hidden md:flex flex-shrink-0 items-stretch px-[12.5px] py-6 md:py-0">
+            <div className="w-px self-stretch shrink-0" style={{ backgroundColor: SEPARATOR_COLOR }} />
+          </div>
+          <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
+            <div className="flex flex-col items-center gap-[15px] w-full min-w-0 max-w-[397px] pb-6 pt-3 px-2">
+              <Image src={avgTimeImg} alt="" width={32} height={32} className="w-8 h-8 mt-4 object-contain shrink-0" />
+              <Text className="text-[#4A5568] md:text-[14px] md:leading-[20px] font-medium text-center min-w-0">
+                Reduces the workload in sterile processing after surgery which improves tray turnover and saves valuable time.
+              </Text>
+            </div>
+          </div>
+        </div>
 
-        {/* Mobile Screen Yellow Blue Cirular Ring */}
-        <Image
-          src={yellowBlueRing}
-          alt="Ring Bg"
-          className="z-0 absolute object-cover pointer-events-none max-w-[58px] right-[28px] bottom-[24px] block lg:hidden"
-        />
+        {/* Horizontal separator*/}
+        <div className="px-[12.5px]" style={{ borderTop: `1px solid ${SEPARATOR_COLOR}` }} />
 
-        <Text className="z-10 text-white w-full max-w-[503px] text-[18px] text-center md:text-left font-medium md:font-bold mb-[43px] md:mb-[0]">
-          <span className="text-[#EDD98A]"> SteriBasin Go: </span> A simple
-          solution that solves a complex problem. <br />
-          If {`you're`} a surgeon, veteran, OR staff, or forward surgical team,
-          how have you dealt with this problem—and would a device like
-          SteriTools change your workflow?
-          <br /> <br />
-          Welcome to the SteriTools conversation.
-        </Text>
-        <SurgicalInstrumentsSlider />
-      </div>
-      <div className="px-5 md:px-0">
-        <Text className="w-full mb-[59px] md:mb-[56px]">
-          Introducing <span className="text-[#EDD98A]">SteriBasin Go</span>, an
-          innovative solution engineered to enhance surgical protocols by
-          removing bioburden, including bacteria, from surgical instruments in
-          real time during procedures. As the first product of its kind,
-          SteriBasin Go empowers operative personnel to automatically clean
-          instruments while the surgeries are underway and also keeps the
-          instruments readily available throughout the procedure.
-          <br />
-          This technology minimizes bioburden left on instruments and reduces
-          the workload in sterile processing departments, improving tray
-          turnover and saving valuable time.
-          <br /> <br />
-          This innovative device boasts a military spec rugged and lightweight
-          design, making it easily portable for forward surgical teams in
-          austere environments. Its battery powered operation, supported by
-          rechargeable batteries, ensures flexibility and convenience,
-          eliminating the reliance on fixed power sources. Additionally,
-          SteriBasin Go is designed to work seamlessly with a consumable kit
-          that is replaced for each patient, reinforcing optimal aseptic
-          technique.
-          <br />
-          <br />
-          Tailored for military applications, SteriBasin Go technology is also
-          scalable for civilian hospital use, positioning it as a versatile
-          solution for enhancing surgical efficiency and safety across various
-          settings.
-        </Text>
-        {/* 
-        <div className="flex justify-center items-center w-full">
-          <Button
-            shimmerBorder
-            className="px-[18px] py-[15px] w-[290px] text-[16px] h-15 mx-auto text-[#fff] bg-[#076F26]"
-          >
-            Invest in SteriTools
-          </Button>
-        </div> */}
-
-        <div className="w-[183px] md:w-[290px]  mx-auto">
-          <ShimmerButton
-            onClick={() => setOpenModal(true)}
-            className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]"
-          >
-            Invest in SteriTools
-          </ShimmerButton>
+        {/* Row 2 */}
+        <div className="flex flex-col md:flex-row justify-center items-stretch w-full max-w-[820px] mx-auto min-w-0">
+          <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
+            <div className="flex flex-col items-center gap-[15px] w-full min-w-0 max-w-[397px] pt-[27px] pb-[30px] px-2">
+              <Image src={batteryImg} alt="" width={32} height={32} className="w-8 h-8 object-contain shrink-0" />
+              <Text className="text-[#4A5568] md:text-[14px] md:leading-[20px] font-medium text-center min-w-0">
+                Lightweight, portable and battery powered
+              </Text>
+            </div>
+          </div>
+          {/*  line separator */}
+          <div className="hidden md:flex flex-shrink-0 items-stretch px-[12.5px] py-6 md:py-0">
+            <div className="w-px self-stretch shrink-0" style={{ backgroundColor: SEPARATOR_COLOR }} />
+          </div>
+          <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
+            <div className="flex flex-col items-center gap-[15px] w-full min-w-0 max-w-[397px] pt-[27px] pb-[30px] px-2">
+              <Image src={personMilitaryImg} alt="" width={32} height={32} className="w-8 h-8 object-contain shrink-0" />
+              <Text className="text-[#4A5568] md:text-[14px] md:leading-[20px] font-medium text-center min-w-0">
+                Designed for military and civilian use
+              </Text>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Invest Form Popup Modal */}
+
+      {/* Mobile - overview slider */}
+      <div className="w-full md:hidden block">
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={24}
+          slidesPerView={1}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          className="overview-swiper "
+        >
+          {OVERVIEW_SLIDES.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex flex-col items-center justify-center text-center bg-white rounded-[24px]  min-h-[102px]">
+                <Image
+                  src={slide.icon}
+                  alt=""
+                  width={60}
+                  height={47}
+                  className="w-16 h-[47px] object-contain shrink-0 mb-4"
+                />
+                <Text className="text-[#4A5568] text-[14px] leading-[20px] font-medium text-center max-w-[320px] mx-auto">
+                  {slide.text}
+                </Text>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* Contact Us button - gradient + shadow, centered */}
+      <div className="md:mt-[70px] mt-[74px] flex justify-center px-5 md:px-0">
+        <button
+          type="button"
+          onClick={() => setOpenModal(true)}
+          className="inline-flex items-center bg-brand-yellow cursor-pointer border-[#EDD98A] border-[2px]  justify-center px-8 py-4 rounded-[8px] font-dmSans font-bold text-[18px] leading-[26px] text-[#14205A] h-[50px] w-full max-w-[290px]"
+
+        >
+          Contact Us
+        </button>
+      </div>
+
       {openModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50">
           <div className="w-full max-h-[90vh] md:max-h-[100vh] overflow-y-auto hide-scrollbar flex py-5 items-start md:justify-center md:items-center">

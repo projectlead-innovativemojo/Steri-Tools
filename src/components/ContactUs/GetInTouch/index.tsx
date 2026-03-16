@@ -25,7 +25,7 @@ export default function GetInTouch() {
             as="h1"
             className="text-[32px] leading-[40px] md:text-[48px] text-[#292929] mb-[31px] md:mb-[39px] md:text-left text-center"
           >
-            Contact <span className="text-[#EDD98A]">Us</span>
+            Contact <span className="text-brand-yellow">Us</span>
           </Text>
 
           {/* Contact info */}

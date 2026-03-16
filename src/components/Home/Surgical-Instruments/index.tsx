@@ -3,144 +3,157 @@ import Image from "next/image";
 
 import Text from "@/ui/Text";
 
-import surgicalinstruments from "@/public/images/home/instruments.png";
 import dotbg from "@/public/images/home/Dot Grid.png";
 import surgical2 from "@/public/images/home/surgical2.png";
-import germsBg from "@/public/images/home/germs-bg.svg";
+import germsBg from "@/public/images/home/germs-icon-bg.png";
+import reduceSsi from "@/public/images/home/reduce-ssi.svg";
+import cuttingMortality from "@/public/images/home/cutting-mortality.svg";
+import lowerAmputations from "@/public/images/home/lowering-amputations.svg";
+import savingTimeMoneyLitigation from "@/public/images/home/Saving-time-money-litigation.svg";
 import yellowDotSquare from "@/public/images/home/yellow-dot-square.svg";
-import blueDotSquare from "@/public/images/home/blue-dot-square.svg";
+import yellowSmallDotsGrids from "@/public/images/home/yellow-small-dots-grids.svg";
+import yellowBg from "@/public/images/home/yellow-bg.png";
 import blueDotGrid from "@/public/images/home/blue-dots-grid.svg";
-import data from "@/public/images/home/Data 1.png";
-
+import germsMobileBg from "@/public/images/home/germs-icon-mobile-bg.png";
+// import germsBg from "@/public/images/home/germs-desktop.png";
 const SurgicalInstruments = () => {
   return (
-    <div className="relative w-full max-w-[1237px]  mx-auto px-5">
-      {/* Germs BG */}
-      <Image
-        src={germsBg}
-        alt="image"
-        className="absolute z-0 object-contain pointer-events-none left-0 md:left-[45px] top-[19%] md:top-[20px]"
-      />
-      <div className="w-full flex justify-center flex-col-reverse  md:flex-row  md:gap-[55px] gap-[0] items-center md:items-start mb-[50px] md:mb-[37px]">
-        <div className="z-10 w-full max-w-[789px] text-center md:text-left">
-          <Text
-            as="h2"
-            className="mb-[42px] md:mb-[64px] pt-[86px] md:pt-[98px]"
-          >
-            Surgical instruments get dirty, SteriBasin Go{" "}
-            <span className="text-[#EDD98A]">
-              {" "}
-              cleans and disinfects surgical instruments{" "}
-            </span>{" "}
-            in real time during surgery.
-          </Text>
-          <Text className="font-montserrat tracking-[-0.2%] text-[18px] md:text-[22px] leading-[24px] md:leading-[28px] font-semibold">
-            <span className="text-[#EDD98A]"> SteriBasin Go: </span> Built
-            Rugged for Combat. Scales for Civilian Use.
-          </Text>
-        </div>
-        <Image
-          src={surgicalinstruments}
-          alt="image"
-          className="w-full max-w-[396px]"
+    <>
+      <div className="relative w-full pt-[104px] md:pt-[93px]  mx-auto">
+
+        {/* Desktop: yellow bg image */}
+        <div
+          className="absolute z-0 top-[0] left-0 right-0 w-full h-[900px] pointer-events-none hidden md:block"
+          style={{
+            backgroundImage: `url(${yellowBg.src})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "bottom center",
+          }}
+          aria-hidden
         />
-      </div>
 
-      {/* 2 */}
-
-      <div className="flex relative items-center gap-[15px] md:gap-[25px] md:flex-now-wrap flex-col md:flex-row">
-        <div className="relative h-full  flex justify-center items-center">
-          <Image
-            src={dotbg}
-            alt="dotbg"
-            className="w-full max-w-[608px] h-[450px] object-cover hidden md:block"
-          />
-          <Image
-            src={yellowDotSquare}
-            alt="dotbg"
-            className="absolute top-[-8px] md:top-[75px] left-0"
-          />
-          <Image
-            src={surgical2}
-            alt=""
-            className="w-full relative -bottom-[20px] md:absolute max-w-[468px] right-0 h-[350px] z-10 md:bottom-[4px]"
-          />
-        </div>
-        <Text className="w-full max-w-[615px] md:mt-0 mt-4">
-          Every surgeon knows the pattern: blood-stained instruments set on the
-          back table, dropped into splash basins, reused mid-case without
-          real-time disinfection.
-          <br /> <br />
-          The tech wipes the instruments…. but is that enough?
-          <br />
-          <br />
-          We trust the field is sterile. It’s not. And surgical site infections
-          (SSIs) remain a major driver of preventable harm.
-          <br />
-          <br />
-          SSI bacteria are found on up to 44% of instruments left in splash
-          basins for just 30 minutes. 12% of unused backtable instruments are
-          contaminated - even in controlled ORs. (Oslo 2024; Najafi & Parvizi,
-          2023)
-          <br />
-          <br />
-          We keep using them anyway. Why hasn’t someone fixed this?
-        </Text>
-      </div>
-
-      {/* 3 */}
-      <div className="flex relative items-center flex-col gap-[10px]  md:flex-row-reverse">
-        <div className="relative h-full min-h-[407px] w-full max-w-[590px] flex justify-center items-center">
-          <Image
-            src={blueDotSquare}
-            alt="blue"
-            className="absolute bottom-[11px] right-0"
-          />
+        {/* Mobile: yellow bg image */}
+        <div
+          className="absolute z-0 top-[200] left-0 right-0 w-full h-[900px] pointer-events-none block md:hidden"
+          style={{
+            backgroundImage: `url(${yellowBg.src})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "bottom center",
+          }}
+          aria-hidden
+        />
+        <div className="w-full relative z-20 max-w-[1240px] mx-auto px-5 flex justify-center flex-col-reverse  md:flex-row  md:gap-[20px] gap-[0] items-center md:items-start md:mb-[37px]">
+          <div className="z-10 relative w-full max-w-[789px] text-center md:text-left">
+            <Text
+              as="h2"
+              className="md:mb-[64px] pt-[115px] md:pt-[98px] text-[28px] leading-[34px] md:text-[28px] md:leading-[34px]"
+            >
+              Surgical instruments “become contaminated”, SteriBasin Go{" "}
+              <span className="text-brand-yellow">
+                {" "}
+                cleans and disinfects surgical instruments{" "}
+              </span>{" "}
+              in real time during surgery.
+            </Text>
+            {/* <Text className="font-montserrat tracking-[-0.2%] text-[18px] md:text-[22px] leading-[24px] md:leading-[28px] font-semibold">
+            <span className="text-brand-yellow"> SteriBasin Go: </span> Built
+            Rugged for Combat. Scales for Civilian Use.
+          </Text> */}
+            {/* Mobile: Germs BG - centered horizontally */}
             <Image
-              src={blueDotGrid}
-              alt="dotbg"
-              className="absolute inset-0 w-full h-full -z-10 hidden md:block"
+              src={germsMobileBg}
+              alt="image"
+              className="absolute z-10 object-contain pointer-events-none left-1/2 -translate-x-1/2 top-[60px] md:hidden block"
             />
-          <video
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10 object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline // ✅ this is key for mobile autoplay
-          >
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          </div>
+          {/* Video card: golden border, white bg, video only */}
+          <div className="w-full relative z-20 max-w-[480px] rounded-[12px] border-[3px] border-brand-yellow bg-white shadow-sm">
+            <div className="relative w-full aspect-video min-h-[180px] flex justify-center items-center overflow-hidden rounded-lg">
+              <video
+                className="w-full h-full max-h-[285px] object-contain"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src="/video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          {/* Desktop: Germs BG */}
+          <Image
+            src={germsBg}
+            alt="image"
+            className="absolute z-10 object-contain pointer-events-none left-0 md:left-[45px] top-[375px] md:top-[0] hidden md:block"
+          />
 
-{/* <Image
-            src={data}
-            alt="dotbg"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[530px] h-[210px] z-10"
-          /> */}
 
-
-          <Text className="md:text-[20px] text-[18px] font-semibold text-black absolute bottom-[50px] left-[20px] md:left-[40px]">
-            Simulated Animation
-          </Text>
         </div>
-        <Text className="w-full max-w-[608px] mt-[31px] md:mt-0">
-          SteriBasin Go is a compact, table-based disinfection device delivering{" "}
-          {`>6-log`} bacterial reduction in under 15 seconds—without disrupting
-          surgical flow.
-          <br /> <br />
-          To put that in perspective: if an instrument is contaminated with 1
-          million bacteria, SteriTools would reduce that to just 1 viable
-          bacterium—on a single tool. Count to 15… that’s how fast.
-          <br /> <br />
-          Now we can trust that our instruments are clean again - and safe for
-          our patients
-          <br /> <br />
-          It was originally built for combat environments, where sterilization
-          is limited and infection is life-threatening. But SteriBasin Go scales
-          to all open cases greater than 30 minutes. 
-        </Text>
+
+
       </div>
-    </div>
+
+      {/* 2 - Surgical benefits */}
+      <div className="relative mt-0 pt-[199px] md:pt-[56px] pb-[64px] md:pb-[125px] md:mt-[76px] overflow-hidden min-h-[320px]">
+        {/* Background - desktop only */}
+        <div
+          className="absolute inset-0 -z-10 hidden md:block"
+          style={{
+            backgroundImage: `url(${yellowSmallDotsGrids.src})`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "auto",
+          }}
+          aria-hidden
+        />
+        <div className=" relative w-full max-w-[1237px] mx-auto md:px-5">
+
+          <div className=" flex flex-col md:flex-row items-center gap-[64px] md:gap-[28px] justify-between">
+            {/* Image */}
+            <div className="w-full relative max-w-[709px] shrink-0 flex justify-center items-center px-[24px] md:px-0">
+              <Image
+                src={surgical2}
+                alt="Surgical operation - SteriBasin Go sterile field"
+                className="w-full h-auto z-10 object-cover aspect-[709/473]"
+              />
+
+              <Image
+                src={yellowDotSquare}
+                alt=""
+                className="absolute md:left-[-44px] md:top-[-38px] top-[-19px] left-[0] h-[73px] w-[73px] md:w-[135px] md:h-[135px] opacity-60 pointer-events-none "
+              />
+              <Image
+                src={yellowDotSquare}
+                alt=""
+                className="absolute md:right-[-48px] md:bottom-[-34px] right-[0] bottom-[-28px]  h-[73px] w-[73px] md:w-[135px] md:h-[135px] opacity-60 pointer-events-none "
+              />
+            </div>
+
+            {/* Right Side */}
+            <div className="w-full max-w-[520px] grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                { icon: reduceSsi, label: "Reduce SSIs" },
+                { icon: cuttingMortality, label: "Cutting mortality rates" },
+                { icon: lowerAmputations, label: "Lowering amputations" },
+                { icon: savingTimeMoneyLitigation, label: "Saving time, money and litigation" },
+              ].map(({ icon, label }) => (
+                <div
+                  key={label}
+                  className="flex flex-col w-full md:max-w-[186px] items-center gap-[20px]  text-gray-800 font-medium text-center"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
+                    <Image src={icon} alt="" width={32} height={32} className="w-[32px] h-[32px] object-contain" />
+                  </div>
+                  <span className="text-[18px] leading-[24px] md:text-[18px] line-height-[26px]">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

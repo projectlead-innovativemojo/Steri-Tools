@@ -76,7 +76,7 @@ export default function TeamSlider() {
     <div className="relative w-full max-w-[1237px] px-5 md:px-0 mx-auto">
       {/* Title */}
       <Text as="h2" className="text-center mb-[73px]">
-        Meet The <span className="text-[#EDD98A]">Team</span>
+        Meet The <span className="text-brand-yellow">Team</span>
       </Text>
 
       {/* Swiper Container */}
@@ -172,7 +172,7 @@ export default function TeamSlider() {
                     <button
                       onClick={() => toggleExpand(index)}
                       className={cn(
-                        "mt-3 text-[#EDD98A] font-semibold underline hidden",
+                        "mt-3 text-brand-yellow font-semibold underline hidden",
                         member.fullBio.length > 290 && "block"
                       )}
                     >

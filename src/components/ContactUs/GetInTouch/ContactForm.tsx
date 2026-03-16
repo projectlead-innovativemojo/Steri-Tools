@@ -164,7 +164,7 @@ export default function ContactForm() {
         disabled={!policyAccepted || loading}
         className={`w-full rounded-md mt-[8px] py-[12.5px] px-4 text-[18px] leading-[20px] font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 ${
           policyAccepted && !loading
-            ? "bg-[#EDD98A] text-[#14205A] hover:bg-[#E3CD73]"
+            ? "bg-brand-yellow text-[#14205A] hover:bg-[#E3CD73]"
             : "bg-gray-300 text-gray-500 cursor-not-allowed"
         }`}
       >

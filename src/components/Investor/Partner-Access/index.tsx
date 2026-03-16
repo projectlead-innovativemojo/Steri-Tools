@@ -23,13 +23,13 @@ const PartnerAccess = () => {
       {/* Text */}
       <Text className="font-montserrat text-[18px] md:text-[22px] leading-[24px] md:leading-[28px] font-medium text-center md:mb-[19px] mb-[53px]">
         Access is restricted to individuals who have signed a{" "}
-        <span className="text-[#EDD98A] font-semibold">
+        <span className="text-brand-yellow font-semibold">
           Non-Disclosure Agreement (NDA)
         </span>{" "}
         with our team.
       </Text>
       {/* Text */}
-      <Text className="font-montserrat text-[#EDD98A] md:text-[22px] md:leading-[28px] font-medium text-center mb-[74px] md:mb-[60px]">
+      <Text className="font-montserrat text-brand-yellow md:text-[22px] md:leading-[28px] font-medium text-center mb-[74px] md:mb-[60px]">
         Click the button below to access the protected Google Drive folder
       </Text>
       {/* <div className="relative flex justify-center items-center w-full max-w-[382px] mx-auto ">
@@ -40,7 +40,7 @@ const PartnerAccess = () => {
         />
         <Image src={deviceImg} alt="Device" className="relative z-10 w-full" />
       </div> */}
-      {/* <Button className="text-white bg-[#076F26] max-w-[260px] h-[60px] border-2 border-[#EDD98A] mt-[90px] mx-auto cursor-pointer">
+      {/* <Button className="text-white bg-[#076F26] max-w-[260px] h-[60px] border-2 border-brand-yellow mt-[90px] mx-auto cursor-pointer">
         Access the Folder
       </Button> */}
 
