@@ -43,7 +43,7 @@ const OVERVIEW_SLIDES = [
 
 const SteriToolsOverview = () => {
   return (
-    <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto mt-[46px] mb-[74px] md:mt-[64px]  md:mb-[80px]">
+    <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto  mb-[74px]  md:mb-[80px]">
 
       {/* Desktop - 5-feature layout */}
       <div className="w-full max-w-[1240px] mx-auto bg-white rounded-[24px] md:block hidden overflow-hidden">
