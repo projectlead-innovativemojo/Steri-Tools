@@ -1,13 +1,13 @@
+/* Lenis scroll stack: base (window scroll) and container scroll */
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: auto;
   overflow-x: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
 
-/* Container scroll: use when ScrollStack is inside a fixed-height wrapper (useWindowScroll=false) */
 .scroll-stack-scroller.scroll-stack-scroller--container {
   height: 100%;
   overflow-y: auto;
@@ -28,7 +28,7 @@
   position: relative;
   isolation: isolate;
   padding: 35px 5rem 0;
-  min-height: 100vh;
+  min-height: 0;
 }
 
 .scroll-stack-card-wrapper {
@@ -38,21 +38,22 @@
 .scroll-stack-card {
   position: relative;
   transform-origin: top center;
-  will-change: transform;
+  will-change: transform, filter;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   background-color: #14205a;
   border-radius: 24px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  height: 20rem;
   width: 100vw;
   max-width: none;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: 30px;
   margin-bottom: 30px;
-  padding-top: 73px;
-  padding-bottom: 73px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  padding-left: 24px;
+  padding-right: 24px;
   box-sizing: border-box;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -60,7 +61,7 @@
 
 .scroll-stack-card--auto-height {
   height: auto;
-  min-height: 20rem;
+  min-height: 0;
 }
 
 .scroll-stack-end {
@@ -68,11 +69,12 @@
   height: 1px;
 }
 
-/* Scroll room after unpin, then gap before next section (mobile overrides below) */
+/* Fixed 66px gap before next section — stable on zoom */
 .scroll-stack-spacer {
   width: 100%;
-  height: calc(0 + 100px);
-  min-height: 100px;
+  height: 66px;
+  min-height: 66px;
+  flex-shrink: 0;
   pointer-events: none;
 }
 
@@ -83,20 +85,12 @@
 
   .scroll-stack-inner {
     min-height: auto;
-    padding-top: 24px;
-    padding-bottom: 0;
   }
 
   .scroll-stack-card {
-    padding-top: 108px;
-    padding-bottom: 108px;
     padding-left: 24px;
     padding-right: 24px;
-    margin-bottom: 16px;
-  }
-
-  .scroll-stack-spacer {
-    height: 24px;
-    min-height: 24px;
+    padding-top: 108px;
+    padding-bottom: 108px;
   }
 }

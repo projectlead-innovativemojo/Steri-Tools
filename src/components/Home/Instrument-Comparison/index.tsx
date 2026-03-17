@@ -11,6 +11,7 @@ import scissorbeforesoak from '@/public/images/home/siccossr-before.png';
 import scissoraftersoak from '@/public/images/home/siccossr-after.png';
 import toolsbeforesoak from '@/public/images/home/tool-before.png';
 import toolsafteresoak from '@/public/images/home/tool-after.png';
+import SteriToolsOverview from '../SteriTools-Overview';
 
 type ComparisonCardProps = {
   beforeImage: import('next/image').StaticImageData;
@@ -21,7 +22,7 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
   <div className="w-full max-w-[1240px] mx-auto">
     <div className="flex flex-row gap-[14px] md:gap-[24px] w-full">
       <div className="flex flex-1 min-w-0 flex-col items-center">
-        <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px] bg-white">
+        <div className="relative w-full overflow-hidden aspect-[608/307] bg-white max-h-[307px]">
           <Image
             src={beforeImage}
             alt="Before soaking in basin with water"
@@ -31,7 +32,7 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
             sizes="(max-width: 768px) 50vw, 608px"
           />
         </div>
-        <div className="flex w-full min-h-[90px] md:min-h-[110px] items-center justify-center bg-[#EEF5FF] px-2 py-4 md:py-5">
+        <div className="flex w-full min-h-0 items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
           <Text className="text-center md:text-[18px] text-[12px] leading-[20px] md:leading-[26px]">
             Before:
             <br />
@@ -40,7 +41,7 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
         </div>
       </div>
       <div className="flex flex-1 min-w-0 flex-col items-center">
-        <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px]">
+        <div className="relative w-full overflow-hidden aspect-[608/307] bg-white max-h-[307px]">
           <Image
             src={afterImage}
             alt="After SteriBasin Go"
@@ -50,7 +51,7 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
             sizes="(max-width: 768px) 50vw, 608px"
           />
         </div>
-        <div className="flex w-full min-h-[90px] md:min-h-[110px] items-center justify-center bg-[#EEF5FF] px-2 py-4 md:py-5">
+        <div className="flex w-full min-h-0 items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
           <Text className="text-center md:text-[18px] text-[12px] leading-[20px] md:leading-[26px]">
             After: <br />
             Cleaned and desinfected in SteriBasin Go
@@ -76,6 +77,7 @@ export default function InstrumentComparison() {
       <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
         <ComparisonCardContent beforeImage={toolsbeforesoak} afterImage={toolsafteresoak} />
       </ScrollStackItem>
+
     </ScrollStack>
   );
 }
