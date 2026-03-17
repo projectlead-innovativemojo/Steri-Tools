@@ -18,6 +18,12 @@
   will-change: scroll-position;
 }
 
+.scroll-stack-scroller.scroll-stack-scroller--safari {
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: auto;
+}
+
 .scroll-stack-inner {
   position: relative;
   isolation: isolate;
