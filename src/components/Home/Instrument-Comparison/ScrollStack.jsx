@@ -13,7 +13,7 @@ const ScrollStack = ({
   itemScale = 0.03,
   itemStackDistance = 30,
   stackPosition = "12%",
-  scaleEndPosition = "10%",
+  scaleEndPosition = "0%",
   baseScale = 0.85,
   scaleDuration = 0.5,
   rotationAmount = 0,
@@ -118,7 +118,9 @@ const ScrollStack = ({
         triggerEnd,
       );
       const targetScale = baseScale + i * itemScale;
-      const scale = 1 - scaleProgress * (1 - targetScale);
+      const easedScaleProgress =
+        scaleProgress * scaleProgress * (3 - 2 * scaleProgress);
+      const scale = 1 - easedScaleProgress * (1 - targetScale);
       const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
 
       let blur = 0;
