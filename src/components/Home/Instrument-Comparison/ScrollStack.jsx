@@ -9,6 +9,16 @@ const isSafariBrowser = () => {
   return /Safari/i.test(ua) && !/Chrome|Chromium|CriOS|Android/i.test(ua);
 };
 
+const isMobileSafari = () => {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  return (
+    /iPhone|iPad|iPod/i.test(ua) &&
+    /Safari/i.test(ua) &&
+    !/Chrome|CriOS/i.test(ua)
+  );
+};
+
 export const ScrollStackItem = ({ children, itemClassName = "" }) => (
   <div className={`scroll-stack-card ${itemClassName}`.trim()}>{children}</div>
 );
@@ -27,8 +37,11 @@ const ScrollStack = ({
   blurAmount = 0,
   useWindowScroll = false,
   onStackComplete,
+  /** 0–1: when stack releases (1 = release when end is at bottom). Lower = release earlier, less scroll. */
+  pinEndMultiplier = 0.96,
 }) => {
   const isSafari = isSafariBrowser();
+  const isMobile = isMobileSafari();
   const scrollerRef = useRef(null);
   const innerRef = useRef(null);
   const stackCompletedRef = useRef(false);
@@ -36,6 +49,7 @@ const ScrollStack = ({
   const lenisRef = useRef(null);
   const cardsRef = useRef([]);
   const isUpdatingRef = useRef(false);
+  const transformRafRef = useRef(null);
 
   const calculateProgress = useCallback((scrollTop, start, end) => {
     if (scrollTop < start) return 0;
@@ -93,10 +107,12 @@ const ScrollStack = ({
   );
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current) return;
+    const cards = cardsRef.current;
+    if (!cards.length || isUpdatingRef.current) return;
 
     isUpdatingRef.current = true;
 
+    /* Phase 1: all layout reads (avoid read-write interleaving / layout thrash) */
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(
@@ -110,15 +126,42 @@ const ScrollStack = ({
 
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
-    cardsRef.current.forEach((card, i) => {
-      if (!card) return;
+    /* On narrow viewport, release stack earlier so section height feels shorter and next section starts sooner */
+    const isNarrow =
+      useWindowScroll &&
+      typeof window !== "undefined" &&
+      window.innerWidth <= 768;
+    const effectivePinEndMultiplier = isNarrow ? 0.7 : pinEndMultiplier;
 
-      const cardTop = getElementOffset(card);
+    const cardTops = [];
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i]) cardTops[i] = getElementOffset(cards[i]);
+    }
+
+    /* Phase 2: all writes (transforms) — no layout reads in this loop */
+    let topCardIndex = 0;
+    if (blurAmount) {
+      for (let j = 0; j < cards.length; j++) {
+        const jCardTop = cardTops[j];
+        if (jCardTop == null) continue;
+        const jTriggerStart =
+          jCardTop - stackPositionPx - itemStackDistance * j;
+        if (scrollTop >= jTriggerStart) topCardIndex = j;
+      }
+    }
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      if (!card) continue;
+
+      const cardTop = cardTops[i];
+      if (cardTop == null) continue;
+
       const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      /* Release when end is near bottom of viewport so less scroll needed before next section */
-      const pinEnd = endElementTop - containerHeight * 0.96;
+      const pinEnd =
+        endElementTop - containerHeight * effectivePinEndMultiplier;
 
       const scaleProgress = calculateProgress(
         scrollTop,
@@ -132,21 +175,9 @@ const ScrollStack = ({
       const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
 
       let blur = 0;
-      if (blurAmount) {
-        let topCardIndex = 0;
-        for (let j = 0; j < cardsRef.current.length; j++) {
-          const jCardTop = getElementOffset(cardsRef.current[j]);
-          const jTriggerStart =
-            jCardTop - stackPositionPx - itemStackDistance * j;
-          if (scrollTop >= jTriggerStart) {
-            topCardIndex = j;
-          }
-        }
-
-        if (i < topCardIndex) {
-          const depthInStack = topCardIndex - i;
-          blur = Math.max(0, depthInStack * blurAmount);
-        }
+      if (blurAmount && i < topCardIndex) {
+        const depthInStack = topCardIndex - i;
+        blur = Math.max(0, depthInStack * blurAmount);
       }
 
       let translateY = 0;
@@ -159,19 +190,14 @@ const ScrollStack = ({
         translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
       }
 
-      const translateYPx = translateY;
-      const scaleVal = scale;
-      const rotationDeg = rotation;
-      const blurPx = blur;
-
-      const transform = `translate3d(0, ${translateYPx}px, 0) scale(${scaleVal}) rotate(${rotationDeg}deg)`;
-      const filter = blurPx > 0 ? `blur(${blurPx}px)` : "";
+      const transform = `translate3d(0, ${translateY}px, 0) scale(${scale}) rotate(${rotation}deg)`;
+      const filter = blur > 0 ? `blur(${blur}px)` : "";
 
       card.style.transform = transform;
       card.style.filter = filter;
       card.style.zIndex = i;
 
-      if (i === cardsRef.current.length - 1) {
+      if (i === cards.length - 1) {
         const isInView = scrollTop >= pinStart && scrollTop <= pinEnd;
         if (isInView && !stackCompletedRef.current) {
           stackCompletedRef.current = true;
@@ -180,7 +206,7 @@ const ScrollStack = ({
           stackCompletedRef.current = false;
         }
       }
-    });
+    }
 
     isUpdatingRef.current = false;
   }, [
@@ -193,6 +219,7 @@ const ScrollStack = ({
     blurAmount,
     useWindowScroll,
     onStackComplete,
+    pinEndMultiplier,
     calculateProgress,
     parsePercentage,
     getScrollData,
@@ -200,8 +227,17 @@ const ScrollStack = ({
   ]);
 
   const handleScroll = useCallback(() => {
-    updateCardTransforms();
-  }, [updateCardTransforms]);
+    /* On mobile Safari, run transform updates in next frame to avoid scroll jank */
+    if (isMobile) {
+      if (transformRafRef.current != null) return;
+      transformRafRef.current = requestAnimationFrame(() => {
+        transformRafRef.current = null;
+        updateCardTransforms();
+      });
+    } else {
+      updateCardTransforms();
+    }
+  }, [updateCardTransforms, isMobile]);
 
   const setupLenis = useCallback(() => {
     const safariLenisOptions = {
@@ -311,7 +347,9 @@ const ScrollStack = ({
         card.style.marginBottom = `${itemDistance}px`;
       }
       card.style.zIndex = i;
-      card.style.willChange = "transform, filter";
+      /* Mobile Safari: only promote transform to reduce layer cost and jank */
+      card.style.willChange =
+        isMobile && !blurAmount ? "transform" : "transform, filter";
       card.style.transformOrigin = "top center";
       card.style.backfaceVisibility = "hidden";
       card.style.transform = "translateZ(0)";
@@ -325,6 +363,10 @@ const ScrollStack = ({
     updateCardTransforms();
 
     return () => {
+      if (transformRafRef.current) {
+        cancelAnimationFrame(transformRafRef.current);
+        transformRafRef.current = null;
+      }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
