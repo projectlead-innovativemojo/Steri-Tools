@@ -70,9 +70,9 @@ const SurgicalInstruments = () => {
           </div>
           {/* Video card: golden border, white bg, video only */}
           <div className="w-full relative z-20 max-w-[480px] rounded-[12px] border-[3px] border-brand-yellow bg-white shadow-sm">
-            <div className="relative w-full aspect-video min-h-[180px] flex justify-center items-center overflow-hidden rounded-lg">
+            <div className="relative w-full aspect-video min-h-[180px] flex justify-center items-center  rounded-lg overflow-hidden">
               <video
-                className="w-full h-full max-h-[285px] object-contain"
+                className="w-full h-full max-h-[285px] object-contain ml-[-30px]! pt-[40px]!"
                 autoPlay
                 muted
                 loop

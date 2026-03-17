@@ -32,8 +32,8 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
             sizes="(max-width: 768px) 50vw, 608px"
           />
         </div>
-        <div className="flex w-full min-h-0 items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
-          <Text className="text-center md:text-[18px] text-[12px] leading-[20px] md:leading-[26px]">
+        <div className="flex w-full min-h-[90px] items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
+          <Text className="text-center md:text-[18px]  text-[12px] leading-[20px] md:leading-[26px]">
             Before:
             <br />
             Instrument soaked in water
@@ -51,8 +51,8 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
             sizes="(max-width: 768px) 50vw, 608px"
           />
         </div>
-        <div className="flex w-full min-h-0 items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
-          <Text className="text-center md:text-[18px] text-[12px] leading-[20px] md:leading-[26px]">
+        <div className="flex w-full min-h-[90px] items-center justify-center bg-[#EEF5FF] px-2 py-3 md:py-4">
+          <Text className="text-center md:text-[18px]  text-[12px] leading-[20px] md:leading-[26px]">
             After: <br />
             Cleaned and desinfected in SteriBasin Go
           </Text>
