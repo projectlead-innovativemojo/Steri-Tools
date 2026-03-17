@@ -1,10 +1,12 @@
 /* Lenis scroll stack: base (window scroll) and container scroll */
+/* When using window scroll: no inner scroller, only outer (document) scroll drives stacking */
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
   height: auto;
   min-height: 0;
   overflow-x: hidden;
+  overflow-y: visible;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -33,6 +35,7 @@
   padding: 35px 5rem 0;
   height: auto;
   min-height: 0;
+  overflow: visible;
 }
 
 .scroll-stack-card-wrapper {
@@ -94,9 +97,23 @@
     min-height: 0 !important;
   }
 
+  /* Disable inner scroller on mobile: only outer (window) scroll drives stacking, no nested scroll */
+  .instrument-comparison-section .scroll-stack-scroller,
+  .scroll-stack-scroller,
+  .scroll-stack-scroller.scroll-stack-scroller--container {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overscroll-behavior: auto !important;
+    -webkit-overflow-scrolling: auto !important;
+    touch-action: pan-y;
+  }
+
   .scroll-stack-inner {
     height: auto;
     min-height: 0;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
   }
 
   .scroll-stack-card {

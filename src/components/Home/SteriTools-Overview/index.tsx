@@ -46,7 +46,7 @@ const SteriToolsOverview = () => {
     <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto  mb-[74px]  md:mb-[80px]">
 
       {/* Desktop - 5-feature layout */}
-      <div className="w-full max-w-[1240px] mx-auto bg-white rounded-[24px] md:block hidden overflow-hidden">
+      <div className="w-full max-w-[1240px] md:mt-[64px] mx-auto bg-white rounded-[24px] md:block hidden overflow-hidden">
         {/* Row 1 */}
         <div className="flex flex-col md:flex-row justify-center items-stretch w-full min-w-0">
           <div className="flex flex-1 min-w-0 flex-col items-center justify-center text-center py-6 md:py-0 md:px-2">
