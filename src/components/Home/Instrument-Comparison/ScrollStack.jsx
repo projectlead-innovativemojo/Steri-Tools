@@ -2,6 +2,13 @@ import { useLayoutEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
 import "./ScrollStack.css";
 
+const isSafariBrowser = () => {
+  if (typeof navigator === "undefined") return false;
+
+  const ua = navigator.userAgent;
+  return /Safari/i.test(ua) && !/Chrome|Chromium|CriOS|Android/i.test(ua);
+};
+
 export const ScrollStackItem = ({ children, itemClassName = "" }) => (
   <div className={`scroll-stack-card ${itemClassName}`.trim()}>{children}</div>
 );
@@ -21,6 +28,7 @@ const ScrollStack = ({
   useWindowScroll = false,
   onStackComplete,
 }) => {
+  const isSafari = isSafariBrowser();
   const scrollerRef = useRef(null);
   const innerRef = useRef(null);
   const stackCompletedRef = useRef(false);
@@ -196,18 +204,33 @@ const ScrollStack = ({
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
+    const safariLenisOptions = {
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1,
+      infinite: false,
+      wheelMultiplier: 1,
+      lerp: 0.06,
+      syncTouch: false,
+    };
+
     if (useWindowScroll) {
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
-        infinite: false,
-        wheelMultiplier: 1,
-        lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
-      });
+      const lenis = new Lenis(
+        isSafari
+          ? safariLenisOptions
+          : {
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              smoothWheel: true,
+              touchMultiplier: 2,
+              infinite: false,
+              wheelMultiplier: 1,
+              lerp: 0.1,
+              syncTouch: true,
+              syncTouchLerp: 0.075,
+            },
+      );
 
       lenis.on("scroll", handleScroll);
 
@@ -223,23 +246,40 @@ const ScrollStack = ({
       const scroller = scrollerRef.current;
       if (!scroller) return;
 
-      const lenis = new Lenis({
-        wrapper: scroller,
-        content: scroller.querySelector(".scroll-stack-inner"),
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
-        infinite: false,
-        gestureOrientationHandler: true,
-        normalizeWheel: true,
-        wheelMultiplier: 1,
-        touchInertiaMultiplier: 35,
-        lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
-        touchInertia: 0.6,
-      });
+      const lenis = new Lenis(
+        isSafari
+          ? {
+              wrapper: scroller,
+              content: scroller.querySelector(".scroll-stack-inner"),
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              smoothWheel: true,
+              touchMultiplier: 1,
+              infinite: false,
+              gestureOrientationHandler: true,
+              normalizeWheel: true,
+              wheelMultiplier: 1,
+              lerp: 0.06,
+              syncTouch: false,
+            }
+          : {
+              wrapper: scroller,
+              content: scroller.querySelector(".scroll-stack-inner"),
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              smoothWheel: true,
+              touchMultiplier: 2,
+              infinite: false,
+              gestureOrientationHandler: true,
+              normalizeWheel: true,
+              wheelMultiplier: 1,
+              touchInertiaMultiplier: 35,
+              lerp: 0.1,
+              syncTouch: true,
+              syncTouchLerp: 0.075,
+              touchInertia: 0.6,
+            },
+      );
 
       lenis.on("scroll", handleScroll);
 
@@ -314,6 +354,7 @@ const ScrollStack = ({
   const scrollerClassName = [
     "scroll-stack-scroller",
     !useWindowScroll && "scroll-stack-scroller--container",
+    isSafari && "scroll-stack-scroller--safari",
     className,
   ]
     .filter(Boolean)
