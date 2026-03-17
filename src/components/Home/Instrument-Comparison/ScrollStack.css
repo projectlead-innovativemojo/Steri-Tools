@@ -22,6 +22,8 @@
   scroll-behavior: auto;
   -webkit-overflow-scrolling: auto;
   overscroll-behavior: auto;
+  /* Hint to Safari that only vertical scroll is needed (can reduce jank) */
+  touch-action: pan-y;
 }
 
 .scroll-stack-inner {
@@ -40,7 +42,10 @@
   transform-origin: top center;
   will-change: transform, filter;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
+  /* Isolate transform so Safari can composite without extra layout */
+  contain: transform;
   background-color: #14205a;
   border-radius: 24px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
