@@ -64,20 +64,24 @@ const ComparisonCardContent = ({ beforeImage, afterImage }: ComparisonCardProps)
 
 export default function InstrumentComparison() {
   return (
-    <ScrollStack useWindowScroll onStackComplete={() => { }}>
-      <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
-        <ComparisonCardContent beforeImage={beforesoak} afterImage={aftersoak} />
-      </ScrollStackItem>
-      <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
-        <ComparisonCardContent beforeImage={nailbeforesoak} afterImage={nailafteresoak} />
-      </ScrollStackItem>
-      <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
-        <ComparisonCardContent beforeImage={scissorbeforesoak} afterImage={scissoraftersoak} />
-      </ScrollStackItem>
-      <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
-        <ComparisonCardContent beforeImage={toolsbeforesoak} afterImage={toolsafteresoak} />
-      </ScrollStackItem>
-
-    </ScrollStack>
+    <section
+      className="instrument-comparison-section h-auto min-h-0"
+      aria-label="Instrument comparison"
+    >
+      <ScrollStack useWindowScroll itemDistance={48} onStackComplete={() => { }}>
+        <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
+          <ComparisonCardContent beforeImage={beforesoak} afterImage={aftersoak} />
+        </ScrollStackItem>
+        <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
+          <ComparisonCardContent beforeImage={nailbeforesoak} afterImage={nailafteresoak} />
+        </ScrollStackItem>
+        <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
+          <ComparisonCardContent beforeImage={scissorbeforesoak} afterImage={scissoraftersoak} />
+        </ScrollStackItem>
+        <ScrollStackItem itemClassName="scroll-stack-card--auto-height">
+          <ComparisonCardContent beforeImage={toolsbeforesoak} afterImage={toolsafteresoak} />
+        </ScrollStackItem>
+      </ScrollStack>
+    </section>
   );
 }

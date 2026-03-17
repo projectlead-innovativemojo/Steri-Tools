@@ -12,7 +12,11 @@ const isSafariBrowser = () => {
 const isMobileSafari = () => {
   if (typeof navigator === "undefined") return false;
   const ua = navigator.userAgent;
-  return /iPhone|iPad|iPod/i.test(ua) && /Safari/i.test(ua) && !/Chrome|CriOS/i.test(ua);
+  return (
+    /iPhone|iPad|iPod/i.test(ua) &&
+    /Safari/i.test(ua) &&
+    !/Chrome|CriOS/i.test(ua)
+  );
 };
 
 export const ScrollStackItem = ({ children, itemClassName = "" }) => (
@@ -33,6 +37,8 @@ const ScrollStack = ({
   blurAmount = 0,
   useWindowScroll = false,
   onStackComplete,
+  /** 0–1: when stack releases (1 = release when end is at bottom). Lower = release earlier, less scroll. */
+  pinEndMultiplier = 0.96,
 }) => {
   const isSafari = isSafariBrowser();
   const isMobile = isMobileSafari();
@@ -120,6 +126,13 @@ const ScrollStack = ({
 
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
+    /* On narrow viewport, release stack earlier so section height feels shorter and next section starts sooner */
+    const isNarrow =
+      useWindowScroll &&
+      typeof window !== "undefined" &&
+      window.innerWidth <= 768;
+    const effectivePinEndMultiplier = isNarrow ? 0.7 : pinEndMultiplier;
+
     const cardTops = [];
     for (let i = 0; i < cards.length; i++) {
       if (cards[i]) cardTops[i] = getElementOffset(cards[i]);
@@ -131,7 +144,8 @@ const ScrollStack = ({
       for (let j = 0; j < cards.length; j++) {
         const jCardTop = cardTops[j];
         if (jCardTop == null) continue;
-        const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j;
+        const jTriggerStart =
+          jCardTop - stackPositionPx - itemStackDistance * j;
         if (scrollTop >= jTriggerStart) topCardIndex = j;
       }
     }
@@ -146,7 +160,8 @@ const ScrollStack = ({
       const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop - containerHeight * 0.96;
+      const pinEnd =
+        endElementTop - containerHeight * effectivePinEndMultiplier;
 
       const scaleProgress = calculateProgress(
         scrollTop,
@@ -204,6 +219,7 @@ const ScrollStack = ({
     blurAmount,
     useWindowScroll,
     onStackComplete,
+    pinEndMultiplier,
     calculateProgress,
     parsePercentage,
     getScrollData,
@@ -332,7 +348,8 @@ const ScrollStack = ({
       }
       card.style.zIndex = i;
       /* Mobile Safari: only promote transform to reduce layer cost and jank */
-      card.style.willChange = isMobile && !blurAmount ? "transform" : "transform, filter";
+      card.style.willChange =
+        isMobile && !blurAmount ? "transform" : "transform, filter";
       card.style.transformOrigin = "top center";
       card.style.backfaceVisibility = "hidden";
       card.style.transform = "translateZ(0)";

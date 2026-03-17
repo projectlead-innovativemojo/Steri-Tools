@@ -2,7 +2,8 @@
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
-  min-height: auto;
+  height: auto;
+  min-height: 0;
   overflow-x: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -30,6 +31,7 @@
   position: relative;
   isolation: isolate;
   padding: 35px 5rem 0;
+  height: auto;
   min-height: 0;
 }
 
@@ -53,8 +55,8 @@
   max-width: none;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding-top: 75px;
   padding-bottom: 75px;
   padding-left: 24px;
@@ -84,18 +86,31 @@
 }
 
 @media (max-width: 768px) {
-  .scroll-stack-scroller {
-    min-height: auto;
+  /* Section height = content only; no extra space so next section starts immediately after last card */
+  .instrument-comparison-section,
+  .scroll-stack-scroller,
+  .scroll-stack-scroller.scroll-stack-scroller--container {
+    height: auto !important;
+    min-height: 0 !important;
   }
 
   .scroll-stack-inner {
-    min-height: auto;
+    height: auto;
+    min-height: 0;
   }
 
   .scroll-stack-card {
+    margin-top: 12px;
+    margin-bottom: 12px;
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 108px;
     padding-bottom: 108px;
+  }
+
+  /* No gap below last card — next section starts immediately */
+  .scroll-stack-spacer {
+    height: 0 !important;
+    min-height: 0 !important;
   }
 }

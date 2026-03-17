@@ -113,7 +113,7 @@ const SteriToolsOverview = () => {
 
 
       {/* Mobile - overview slider */}
-      <div className="w-full md:hidden block">
+      <div className="w-full md:hidden block mt-[46px]">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={24}
