@@ -210,6 +210,15 @@ body {
   scrollbar-width: none;
 }
 
+/* Stacking section: hide main scrollbar visually while GSAP drives scroll */
+html.stacking-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+html.stacking-scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 /* Overview mobile slider pagination: hollow dots with border, active filled */
 .overview-swiper .swiper-pagination {
   position: relative;

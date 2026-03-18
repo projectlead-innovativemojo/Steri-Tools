@@ -6,6 +6,7 @@ import WhyNow from "@/components/Home/Why-Now";
 import SteriToolsOverview from "@/components/Home/SteriTools-Overview";
 import MissionVission from "@/components/Home/Mission-Vission";
 import InstrumentComparison from "@/components/Home/Instrument-Comparison";
+import SurgicalInstrumentComparison from "@/components/Home/Surgical-Instrument-Comparison";
 
 const HomePage = () => {
   return (
@@ -13,7 +14,8 @@ const HomePage = () => {
       <HomeHero />
       <SurgicalInstruments />
       <WhyNow />
-      <InstrumentComparison />
+      <SurgicalInstrumentComparison />
+      {/* <InstrumentComparison /> */}
       <SteriToolsOverview />
       <MissionVission />
     </>

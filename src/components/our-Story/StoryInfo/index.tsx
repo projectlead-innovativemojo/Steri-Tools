@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import Text from "@/ui/Text";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
@@ -117,13 +118,23 @@ const StoryInfo = () => {
         Invest in SteriTools
       </ShimmerButton> */}
 
-      <div className="w-[183px] md:w-[290px]  mx-auto">
+      {/* <div className="w-[183px] md:w-[290px]  mx-auto">
         <ShimmerButton
           onClick={() => setOpenModal(true)}
           className="w-full  max-w-[183px] md:max-w-[290px]  mx-auto text-[16px] md:text-[18px] font-dmSans font-bold rounded-[8px]  mb-[101px]"
         >
           Invest in SteriTools
         </ShimmerButton>
+      </div> */}
+
+      {/* Contact Us button - navigates to contact page */}
+      <div className=" flex justify-center px-5 mb-[101px] md:px-0">
+        <button
+          onClick={() => setOpenModal(true)}
+          className="inline-flex items-center bg-brand-yellow  cursor-pointer border-[#EDD98A] border-[2px] justify-center px-8 py-4 rounded-[8px] font-dmSans font-bold text-[18px] leading-[26px] text-[#14205A] h-[50px] w-full max-w-[290px]"
+        >
+          Invest in SteriTools
+        </button>
       </div>
 
       {/* Invest Form Popup Modal */}
