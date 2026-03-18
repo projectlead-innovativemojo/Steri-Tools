@@ -9,22 +9,33 @@ import Image from "next/image";
 
 import beforesoak from "@/public/images/home/Before_After SteriBasin Go 1.jpg";
 import aftersoak from "@/public/images/home/Before_After SteriBasin Go 2.jpg";
+import nailbeforesoak from "@/public/images/home/nail-before.png";
+import nailafteresoak from "@/public/images/home/nail-after.png";
+import scissorbeforesoak from "@/public/images/home/siccossr-before.png";
+import scissoraftersoak from "@/public/images/home/siccossr-after.png";
+import toolsbeforesoak from "@/public/images/home/tool-before.png";
+import toolsafteresoak from "@/public/images/home/tool-after.png";
+
+import type { StaticImageData } from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const STACK_GAP_DESKTOP = 24;
-const STACK_GAP_MOBILE = 12;
-const cardClass =
-  "relative flex justify-center md:flex-row flex-col items-center px-5 md:py-[73px] py-[108px] gap-0 bg-[#14205A] w-full md:min-h-[544px] rounded-[24px] mx-auto shadow-lg";
+const cardBaseClass =
+  "absolute left-1/2 -translate-x-1/2 w-[100vw] max-w-none flex justify-center md:flex-row flex-col items-center px-5 md:py-[73px] py-[108px] gap-0 bg-[#14205A] md:min-h-[544px] rounded-[24px] shadow-[0_0_30px_rgba(0,0,0,0.1)] origin-top will-change-transform box-border";
 
-const CardContent = () => (
+type CardContentProps = {
+  beforeImage: StaticImageData;
+  afterImage: StaticImageData;
+};
+
+const CardContent = ({ beforeImage, afterImage }: CardContentProps) => (
   <>
     <div className="w-full max-w-[1240px] mx-auto">
       <div className="flex flex-row gap-[14px] md:gap-[24px] w-full">
         <div className="flex flex-1 min-w-0 flex-col items-center">
-          <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px]">
+          <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px] bg-white">
             <Image
-              src={beforesoak}
+              src={beforeImage}
               alt="Before soaking in basin with water"
               width={608}
               height={307}
@@ -41,9 +52,9 @@ const CardContent = () => (
           </div>
         </div>
         <div className="flex flex-1 min-w-0 flex-col items-center">
-          <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px]">
+          <div className="relative w-full overflow-hidden aspect-[608/307] max-h-[307px] bg-white">
             <Image
-              src={aftersoak}
+              src={afterImage}
               alt="After SteriBasin Go"
               width={608}
               height={307}
@@ -63,125 +74,251 @@ const CardContent = () => (
   </>
 );
 
+const CARD_IMAGES: CardContentProps[] = [
+  { beforeImage: beforesoak, afterImage: aftersoak },
+  { beforeImage: nailbeforesoak, afterImage: nailafteresoak },
+  { beforeImage: scissorbeforesoak, afterImage: scissoraftersoak },
+  { beforeImage: toolsbeforesoak, afterImage: toolsafteresoak },
+];
+
+/** Viewport height ratio for the stacking "stage" (70% = leaves context above/below, avoids full-screen takeover) */
+const SECTION_VIEWPORT_RATIO = 0.7;
+/** Mobile: tighter ratio so section height matches card size and next section follows immediately */
+const SECTION_VIEWPORT_RATIO_MOBILE = 0.6;
+
+const GAP_TO_NEXT_SECTION = 64;
+const GAP_TO_NEXT_SECTION_MOBILE = 46;
+const SECTION_BUFFER = 120;
+const SECTION_BUFFER_MOBILE = 0;
+const SECTION_HEIGHT_MIN_DESKTOP = 680;
+const SECTION_HEIGHT_MIN_MOBILE = 390;
+const SCRUB_SMOOTH = 1.5;
+const TWEEN_EASE = "power2.inOut";
+
 const SurgicalInstrumentComparison = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const pinWrapperRef = useRef<HTMLDivElement>(null);
+  const sectionWrapperRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
   const card3Ref = useRef<HTMLDivElement>(null);
   const card4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const pinWrapper = pinWrapperRef.current;
+    const sectionWrapper = sectionWrapperRef.current;
+    const cards = cardsRef.current;
     const card1 = card1Ref.current;
     const card2 = card2Ref.current;
     const card3 = card3Ref.current;
     const card4 = card4Ref.current;
 
-    if (!section || !pinWrapper || !card1 || !card2 || !card3 || !card4) return;
+    if (!sectionWrapper || !cards || !card1 || !card2 || !card3 || !card4)
+      return;
 
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const stackGap = isMobile ? STACK_GAP_MOBILE : STACK_GAP_DESKTOP;
+    const mm = gsap.matchMedia();
 
-    // Stacking cards start below; final y = gap each (0, -gap, -2*gap, -3*gap)
-    gsap.set([card2, card3, card4], { yPercent: 100, opacity: 0.7 });
+    mm.add("(min-width: 768px)", () => {
+      const vh70 = window.innerHeight * SECTION_VIEWPORT_RATIO;
+      const sectionHeight = Math.max(
+        vh70 + GAP_TO_NEXT_SECTION + SECTION_BUFFER,
+        SECTION_HEIGHT_MIN_DESKTOP
+      );
+      sectionWrapper.style.height = `${sectionHeight}px`;
+      sectionWrapper.style.overflow = "hidden";
 
-    // Section height = only scroll needed to center card1 then run stack
-    const topSpacerVh = 20;
-    const scrollToCenterVh = 35;
-    const pinScrollDistance = isMobile ? 55 : 70; // slightly less scroll on mobile (smaller cards)
-    const sectionHeightVh = topSpacerVh + scrollToCenterVh + pinScrollDistance;
-    gsap.set(section, { height: `${sectionHeightVh}vh` });
+      gsap.set([card1, card2, card3, card4], { transformOrigin: "top center" });
+      gsap.set(card1, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card2, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card3, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card4, { yPercent: 0, opacity: 1, scale: 1 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: card1,
-        start: "center center",
-        end: `+=${pinScrollDistance}vh`,
-        scrub: 1.2,
-        pin: pinWrapper,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        pinSpacing: false,
-      },
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionWrapper,
+          pin: true,
+          pinSpacing: true,
+          start: "top top",
+          end: `+=${sectionHeight}`,
+          scrub: SCRUB_SMOOTH,
+          invalidateOnRefresh: true,
+
+        },
+      });
+
+      const t = (vars: gsap.TweenVars) => ({ ease: TWEEN_EASE, ...vars });
+
+      // Card 1 visible
+      tl.addLabel("card1");
+      tl.to(card1, t({ yPercent: 0, opacity: 1 }));
+
+      // Card 2 enters from below; card 1 scales down and moves up
+      tl.from(card2, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card2");
+      tl.to(card1, t({ scale: 0.925, yPercent: -0.75, opacity: 1 }), "-=0.3");
+      tl.to(card2, t({ yPercent: 0, opacity: 1 }));
+
+      // Card 3 enters; card 2 scales down and moves up
+      tl.from(card3, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card3");
+      tl.to(card2, t({ scale: 0.95, yPercent: -0.5, opacity: 1 }), "-=0.3");
+      tl.to(card3, t({ yPercent: 0, opacity: 1 }));
+
+      // Card 4 enters; card 3 scales down and moves up
+      tl.from(card4, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card4");
+      tl.to(card3, t({ scale: 0.98, yPercent: -0.4, opacity: 1 }), "-=0.3");
+      tl.to(card4, t({ yPercent: 0, opacity: 1 }));
+
+      // Final stacked state: all back cards scaled and shifted up
+      tl.to(card1, t({ scale: 0.925, yPercent: -1.5, opacity: 0.9 }), "-=0.3");
+      tl.to(card2, t({ scale: 0.95, yPercent: -1.125, opacity: 0.9 }), "-=0.3");
+      tl.to(card3, t({ scale: 0.98, yPercent: -0.85, opacity: 0.9 }), "-=0.3");
+
+      const st = tl.scrollTrigger;
+      let resizeTicker: ReturnType<typeof setTimeout> | null = null;
+      const onResize = () => {
+        if (resizeTicker) return;
+        resizeTicker = setTimeout(() => {
+          resizeTicker = null;
+          const vh = window.innerHeight * SECTION_VIEWPORT_RATIO;
+          const newHeight = Math.max(
+            vh + GAP_TO_NEXT_SECTION + SECTION_BUFFER,
+            SECTION_HEIGHT_MIN_DESKTOP
+          );
+          sectionWrapper.style.height = `${newHeight}px`;
+          if (st?.vars) st.vars.end = `+=${newHeight}`;
+          ScrollTrigger.refresh();
+        }, 150);
+      };
+      window.addEventListener("resize", onResize);
+
+      return () => {
+        window.removeEventListener("resize", onResize);
+        if (resizeTicker) clearTimeout(resizeTicker);
+      };
     });
 
-    // One card stacks fully before the next starts (sequential); tighter gap on mobile
-    tl.to(card2, {
-      yPercent: 0,
-      y: -stackGap * 1,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.inOut",
-    })
-      .to(
-        card3,
-        {
-          yPercent: 0,
-          y: -stackGap * 2,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        ">"
-      )
-      .to(
-        card4,
-        {
-          yPercent: 0,
-          y: -stackGap * 3,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        ">"
+    mm.add("(max-width: 767px)", () => {
+      const vhMobile = window.innerHeight * SECTION_VIEWPORT_RATIO_MOBILE;
+      const sectionHeight = Math.max(
+        vhMobile + GAP_TO_NEXT_SECTION_MOBILE + SECTION_BUFFER_MOBILE,
+        SECTION_HEIGHT_MIN_MOBILE
       );
+      sectionWrapper.style.height = `${sectionHeight}px`;
+      sectionWrapper.style.overflow = "hidden";
+
+      gsap.set([card1, card2, card3, card4], { transformOrigin: "top center" });
+      gsap.set(card1, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card2, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card3, { yPercent: 0, opacity: 1, scale: 1 });
+      gsap.set(card4, { yPercent: 0, opacity: 1, scale: 1 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionWrapper,
+          pin: true,
+          pinSpacing: true,
+          start: "top 10%",
+          end: `+=${sectionHeight}`,
+          scrub: SCRUB_SMOOTH,
+          invalidateOnRefresh: true,
+
+        },
+      });
+
+      const t = (vars: gsap.TweenVars) => ({ ease: TWEEN_EASE, ...vars });
+
+      tl.addLabel("card1");
+      tl.to(card1, t({ yPercent: 0, opacity: 1 }));
+
+      tl.from(card2, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card2");
+      tl.to(card1, t({ scale: 0.925, yPercent: -0.75, opacity: 1 }), "-=0.3");
+      tl.to(card2, t({ yPercent: 0, opacity: 1 }));
+
+      tl.from(card3, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card3");
+      tl.to(card2, t({ scale: 0.95, yPercent: -0.5, opacity: 1 }), "-=0.3");
+      tl.to(card3, t({ yPercent: 0, opacity: 1 }));
+
+      tl.from(card4, t({ yPercent: 75, opacity: 0 }));
+      tl.addLabel("card4");
+      tl.to(card3, t({ scale: 0.98, yPercent: -0.4, opacity: 1 }), "-=0.3");
+      tl.to(card4, t({ yPercent: 0, opacity: 1 }));
+
+      tl.to(card1, t({ scale: 0.925, yPercent: -1.5, opacity: 0.9 }), "-=0.3");
+      tl.to(card2, t({ scale: 0.95, yPercent: -1.125, opacity: 0.9 }), "-=0.3");
+      tl.to(card3, t({ scale: 0.98, yPercent: -0.85, opacity: 0.9 }), "-=0.3");
+
+      const st = tl.scrollTrigger;
+      let resizeTicker: ReturnType<typeof setTimeout> | null = null;
+      const onResize = () => {
+        if (resizeTicker) return;
+        resizeTicker = setTimeout(() => {
+          resizeTicker = null;
+          const vh = window.innerHeight * SECTION_VIEWPORT_RATIO_MOBILE;
+          const newHeight = Math.max(
+            vh + GAP_TO_NEXT_SECTION_MOBILE + SECTION_BUFFER_MOBILE,
+            SECTION_HEIGHT_MIN_MOBILE
+          );
+          sectionWrapper.style.height = `${newHeight}px`;
+          if (st?.vars) st.vars.end = `+=${newHeight}`;
+          ScrollTrigger.refresh();
+        }, 150);
+      };
+      window.addEventListener("resize", onResize);
+
+      return () => {
+        window.removeEventListener("resize", onResize);
+        if (resizeTicker) clearTimeout(resizeTicker);
+      };
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (sectionWrapperRef.current) {
+        sectionWrapperRef.current.style.height = "";
+        sectionWrapperRef.current.style.overflow = "";
+      }
+      mm.revert();
     };
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative w-full">
-      {/* Spacer so card 1 can scroll up to center before sticking */}
-      <div className="h-[20vh] shrink-0" aria-hidden />
+    <div className="relative w-full overflow-x-hidden pt-0 md:pt-[70px]">
       <div
-        ref={pinWrapperRef}
-        className="relative min-h-screen flex items-center justify-center px-4 py-8"
+        ref={sectionWrapperRef}
+        className="relative w-full mb-[60px] pt-[70px] md:pt-0 overflow-hidden min-h-[55vh] md:min-h-[70vh]"
       >
-        <div className="relative w-full max-w-[1240px] mx-auto min-h-[400px] flex flex-col items-center justify-center gap-0">
-          {/* Card 1 - sticks in center, back of stack */}
+        <div
+          ref={cardsRef}
+          className="cards relative flex justify-center items-center w-full overflow-visible pb-6 min-h-[55vh] md:min-h-[70vh]"
+        >
           <div
             ref={card1Ref}
-            className={`${cardClass} z-[1] md:mb-0 mb-4`}
-            style={{ maxWidth: "1240px" }}
+            className={`${cardBaseClass} card1 top-0 z-[2]`}
+            style={{ maxWidth: "none" }}
           >
-            <CardContent />
+            <CardContent {...CARD_IMAGES[0]} />
           </div>
-
-          {/* Cards 2–4 - scroll up and stack with 24px gap */}
           <div
             ref={card2Ref}
-            className={`${cardClass} z-[2] absolute left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-full`}
-            style={{ maxWidth: "1240px", top: "50%", marginTop: "-520px" }}
+            className={`${cardBaseClass} card2 top-[30px] z-[3]`}
+            style={{ maxWidth: "none" }}
           >
-            <CardContent />
+            <CardContent {...CARD_IMAGES[1]} />
           </div>
           <div
             ref={card3Ref}
-            className={`${cardClass} z-[3] absolute left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-full`}
-            style={{ maxWidth: "1240px", top: "50%", marginTop: "-520px" }}
+            className={`${cardBaseClass} card3 top-[60px] z-[4]`}
+            style={{ maxWidth: "none" }}
           >
-            <CardContent />
+            <CardContent {...CARD_IMAGES[2]} />
           </div>
           <div
             ref={card4Ref}
-            className={`${cardClass} z-[4] absolute left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-full`}
-            style={{ maxWidth: "1240px", top: "50%", marginTop: "-520px" }}
+            className={`${cardBaseClass} card4 top-[90px] z-[5]`}
+            style={{ maxWidth: "none" }}
           >
-            <CardContent />
+            <CardContent {...CARD_IMAGES[3]} />
           </div>
         </div>
       </div>
