@@ -82,12 +82,12 @@ export default function TeamSlider() {
       {/* Swiper Container */}
       <div className="relative mb-[60px] md:mb-[78px]">
         {/* Navigation Buttons (desktop) */}
-        <div className="hidden md:absolute right-[80px] bottom-[29px] z-10 md:flex gap-[33px]">
+        <div className="hidden md:absolute right-[80px] bottom-[22px] z-10 md:flex gap-[30px]">
           <div className="nav-team-left cursor-pointer">
-            <Image src={navLeft} alt="Previous" width={42} height={42} />
+            <Image src={navLeft} alt="Previous" width={40} height={40} />
           </div>
           <div className="nav-team-right cursor-pointer">
-            <Image src={navRight} alt="Next" width={42} height={42} />
+            <Image src={navRight} alt="Next" width={40} height={40} />
           </div>
         </div>
 
@@ -160,9 +160,8 @@ export default function TeamSlider() {
                 {/* Bio */}
                 <div className="text-white text-sm leading-relaxed px-4 max-w-[711px] w-full text-left">
                   <Text
-                    className={`whitespace-pre-line ${
-                      expanded[index] ? "" : "clamp-mobile"
-                    }`}
+                    className={`whitespace-pre-line ${expanded[index] ? "" : "clamp-mobile"
+                      }`}
                   >
                     {member.fullBio}
                   </Text>
@@ -196,14 +195,24 @@ export default function TeamSlider() {
         </div>
       </div>
 
+      {/* Contact Us button - navigates to contact page */}
+      <div className=" mb-[67px] flex justify-center px-5 md:px-0">
+        <Link
+          href="/contact-us"
+          className="inline-flex items-center bg-brand-yellow  cursor-pointer border-[#EDD98A] border-[2px] justify-center px-8 py-4 rounded-[8px] font-dmSans font-bold text-[18px] leading-[26px] text-[#14205A] h-[50px] w-full max-w-[290px]"
+        >
+          Partner with Us
+        </Link>
+      </div>
+
       {/* Partner Button */}
-      <div className="w-[290px] mx-auto">
+      {/* <div className="w-[290px] mx-auto">
         <Link href="/contact-us">
           <ShimmerButton className="w-full max-w-[290px] mx-auto text-[18px] font-dmSans font-bold rounded-[8px] mb-[67px]">
             Partner with Us
           </ShimmerButton>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }
