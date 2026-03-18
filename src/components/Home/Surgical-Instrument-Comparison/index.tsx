@@ -84,16 +84,16 @@ const CARD_IMAGES: CardContentProps[] = [
 /** Viewport height ratio for the stacking "stage" (70% = leaves context above/below, avoids full-screen takeover) */
 const SECTION_VIEWPORT_RATIO = 0.7;
 /** Mobile: tighter ratio so section height matches card size and next section follows immediately */
-const SECTION_VIEWPORT_RATIO_MOBILE = 0.6;
+const SECTION_VIEWPORT_RATIO_MOBILE = 0.7;
 
 const GAP_TO_NEXT_SECTION = 64;
 const GAP_TO_NEXT_SECTION_MOBILE = 46;
-const SECTION_BUFFER = 120;
-const SECTION_BUFFER_MOBILE = 0;
+const SECTION_BUFFER = 160;
+const SECTION_BUFFER_MOBILE = 40;
 const SECTION_HEIGHT_MIN_DESKTOP = 680;
-const SECTION_HEIGHT_MIN_MOBILE = 390;
-const SCRUB_SMOOTH = 1.5;
-const TWEEN_EASE = "power2.inOut";
+const SECTION_HEIGHT_MIN_MOBILE = 400;
+const SCRUB_SMOOTH = 2.5;
+const TWEEN_EASE = "sine.inOut";
 
 const SurgicalInstrumentComparison = () => {
   const sectionWrapperRef = useRef<HTMLDivElement>(null);
@@ -217,7 +217,7 @@ const SurgicalInstrumentComparison = () => {
           trigger: sectionWrapper,
           pin: true,
           pinSpacing: true,
-          start: "top 10%",
+          start: "top top",
           end: `+=${sectionHeight}`,
           scrub: SCRUB_SMOOTH,
           invalidateOnRefresh: true,
@@ -286,11 +286,11 @@ const SurgicalInstrumentComparison = () => {
     <div className="relative w-full overflow-x-hidden pt-0 md:pt-[70px]">
       <div
         ref={sectionWrapperRef}
-        className="relative w-full mb-[60px] pt-[70px] md:pt-0 overflow-hidden min-h-[55vh] md:min-h-[70vh]"
+        className="relative w-full mb-[60px] pt-[70px] md:pt-0 overflow-hidden min-h-[60vh] md:min-h-[70vh]"
       >
         <div
           ref={cardsRef}
-          className="cards relative flex justify-center items-center w-full overflow-visible pb-6 min-h-[55vh] md:min-h-[70vh]"
+          className="cards relative flex justify-center items-center w-full overflow-visible pb-6 min-h-[60vh] md:min-h-[70vh]"
         >
           <div
             ref={card1Ref}
