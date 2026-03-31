@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
         "Chris@SteriToolsGlobal.com",
         "Leigh@SteriToolsGlobal.com",
         "Mike@SteriToolsGlobal.com",
+        "Info@SteriToolsGlobal.com",
       ],
 
       subject: "Contact Form Response",

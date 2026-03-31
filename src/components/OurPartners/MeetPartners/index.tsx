@@ -64,9 +64,9 @@ const MeetPatrtners = () => {
               Angeles. EEE specializes in the end-to-end acceleration of health
               technology—from concept to commercialization—and has a
               long-standing history of successfully launching medical devices.
-              Its D.C. office, located adjacent to the NIH campus, serves as a
+              {/* Its D.C. office, located adjacent to the NIH campus, serves as a
               strategic bridge between civilian innovation and the U.S.
-              Department of Defense (DoD).
+              Department of Defense (DoD). */}
             </Text>
           </>
         )}

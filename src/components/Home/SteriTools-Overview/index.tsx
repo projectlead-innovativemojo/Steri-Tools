@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
 import Text from "@/ui/Text";
+import InvestPopupForm from "@/components/Invest-Pop-Up";
 
 import bacteriaImg from "@/public/images/overview/bacteria.svg";
 import surgicalImg from "@/public/images/overview/material-symbols_surgical.svg";
@@ -42,6 +42,9 @@ const OVERVIEW_SLIDES = [
 ];
 
 const SteriToolsOverview = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const closeModal = () => setOpenModal(false);
+
   return (
     <div className="w-full max-w-[1237px] px-5 lg:px-0 mx-auto  mb-[74px]  md:mb-[80px]">
 
@@ -146,15 +149,24 @@ const SteriToolsOverview = () => {
         </Swiper>
       </div>
 
-      {/* Contact Us button - navigates to contact page */}
+      {/* Pre Order — opens invest / pre-order form modal */}
       <div className="md:mt-[70px] mt-[74px] flex justify-center px-5 md:px-0">
-        <Link
-          href="/contact-us"
+        <button
+          type="button"
+          onClick={() => setOpenModal(true)}
           className="inline-flex items-center bg-brand-yellow cursor-pointer border-[#EDD98A] border-[2px] justify-center px-8 py-4 rounded-[8px] font-dmSans font-bold text-[18px] leading-[26px] text-[#14205A] h-[50px] w-full max-w-[290px]"
         >
-          Contact Us
-        </Link>
+          Pre Order
+        </button>
       </div>
+
+      {openModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5 bg-black/50">
+          <div className="w-full max-h-[90vh] md:max-h-[100vh] overflow-y-auto hide-scrollbar flex py-5 items-start md:justify-center md:items-center">
+            <InvestPopupForm closeModal={closeModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

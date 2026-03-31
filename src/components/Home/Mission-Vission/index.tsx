@@ -59,10 +59,9 @@ const MissionVision = () => {
             Reducing SSI rates
           </Text>
           <Text className="text-white font-montserrat font-medium text-[16px] md:text-[22px] leading-[28px] ">
-            SteriTools, LLC is dedicated to reducing the global incidence of
-            surgical site infections (SSI) by creating and developing innovative
-            intraoperative disinfection technologies in order to improve the
-            safety and lives of surgical patients around the world.
+            SteriTools, LLC is dedicated to creating and developing innovative intraoperative disinfection
+            technologies to improve the safety and lives of surgical patients worldwide by reducing SSIs,
+            cutting mortality rates, lowering amputation rates, and saving time, money, and litigation costs.
           </Text>
         </div>
 
