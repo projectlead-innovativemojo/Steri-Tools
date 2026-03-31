@@ -33,6 +33,12 @@ export default function GetInTouch() {
             <div>
               <a
                 className="block underline"
+                href="mailto:Info@SteriToolsGlobal.com"
+              >
+               Info@SteriToolsGlobal.com
+              </a>
+              {/* <a
+                className="block underline"
                 href="mailto:Chris@SteriToolsGlobal.com"
               >
                 Chris@SteriToolsGlobal.com
@@ -48,7 +54,7 @@ export default function GetInTouch() {
                 href="mailto:Mike@SteriToolsGlobal.com"
               >
                 Mike@SteriToolsGlobal.com
-              </a>
+              </a> */}
             </div>
           </address>
         </div>
