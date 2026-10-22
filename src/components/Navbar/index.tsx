@@ -48,7 +48,7 @@ const Navbar = () => {
             >
               <Image
                 src="/Logo.svg"
-                alt="Flowbite Logo"
+                alt="SteriTools"
                 width={132}
                 height={132}
               />
