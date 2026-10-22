@@ -153,7 +153,12 @@ export default function ContactForm() {
           className="ml-3 text-[16px] leading-[26px] text-[#6D6D6D]"
         >
           You agree to our friendly{" "}
-          <a href="#" className="underline">
+          <a
+            href="/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
             privacy policy
           </a>
           .
