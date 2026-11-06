@@ -65,7 +65,7 @@ const CardContent = ({ beforeImage, afterImage }: CardContentProps) => (
           <div className="flex w-full min-h-[90px] md:min-h-[110px] items-center justify-center bg-[#EEF5FF] px-2 py-4 md:py-5">
             <Text className="text-center md:text-[18px] text-[12px] leading-[20px] md:leading-[26px]">
               After: <br />
-              Cleaned and desinfected in SteriBasin Go
+              Cleaned and disinfected in SteriBasin Go
             </Text>
           </div>
         </div>

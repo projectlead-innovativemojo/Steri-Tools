@@ -73,7 +73,7 @@ const SurgicalInstrumentsSlider = () => {
                   />
                   <p className="text-center text-xs mt-2 max-w-[183px] mx-auto">
                     After: <br />
-                    Cleaned and desinfected in SteriBasin Go
+                    Cleaned and disinfected in SteriBasin Go
                   </p>
                 </div>
               </div>
